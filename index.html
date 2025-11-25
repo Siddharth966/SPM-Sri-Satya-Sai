@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sri Satya Sai Sanjeevani Eye Hospital — Vision For All</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* GENERAL RESET */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #0b6b71;
+        --primary-dark: #064449;
+        --light-bg: #f7f9fb;
+        --text-color: #222;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-color);
+        background-color: #ffffff;
+        padding-top: 115px; /* for fixed navbar */
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        background: linear-gradient(to right, white, #c3aa31);
+        width: 100%;
+        position: fixed;
+        left: 0;
+        padding: 0 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Logo */
+      .navbar-brand img.logo {
+        width: 120px;
+        height: auto;
+        padding: 6px;
+        border-radius: 8px;
+      }
+
+      /* Links */
+      .navbar-nav .nav-link {
+        font-weight: 530;
+        font-size: 17px;
+        padding: 12px 16px;
+        color: #150404 !important;
+        transition: 0.3s ease;
+        border-radius: 6px;
+      }
+
+      /* Hover */
+      .navbar-nav .nav-link:hover {
+        background: #d0b906;
+        color: #000 !important;
+      }
+
+      /* Active */
+      .navbar-nav .nav-link.active {
+        color: #d44570 !important;
+      }
+
+      /* Dropdown toggle caret */
+      .navbar-nav .dropdown-toggle::after {
+        margin-left: 5px;
+        vertical-align: 2px;
+      }
+
+      /* Dropdown Menu */
+      .navbar .dropdown-menu {
+        background: #c09919; /* from original */
+        border-radius: 8px; /* from original */
+        border: none;
+        padding: 0.3rem 0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Dropdown Items */
+      .navbar .dropdown-item {
+        color: #1a0d0d;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: 0.3s ease;
+      }
+
+      /* Dropdown Hover */
+      .navbar .dropdown-item:hover {
+        background: #e5b70a;
+        color: #fff !important;
+      }
+
+      /* Donate Button */
+      .btn-donate {
+        background: #0b6b71;
+        color: white !important;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+
+      .btn-donate:hover {
+        background: #064449;
+      }
+
+      /* Mobile Toggler Icon */
+      .navbar-toggler {
+        border: none !important;
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      /* MARQUEE */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        background: var(--primary-color);
+        padding: 8px 0;
+        position: relative;
+      }
+
+      .marquee-track {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scrollLoop 15s linear infinite;
+      }
+
+      .marquee-track span {
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+      }
+
+      @keyframes scrollLoop {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Marquee Fix for Mobile Screens */
+      @media (max-width: 600px) {
+        /* Adjust marquee text */
+        .marquee-track span {
+          font-size: 13px;
+        }
+
+        /* The navbar becomes taller on mobile (~150px) */
+        body {
+          padding-top: 115px !important;
+        }
+
+        .marquee-container {
+          padding: 5px 0;
+        }
+      }
+
+      @media (max-width: 425px) {
+        body {
+          padding-top: 115px !important; /* adjust for smaller screens */
+        }
+      }
+
+      @media (max-width: 375px) {
+        body {
+          padding-top: 115px !important; /* iPhone SE, small devices */
+        }
+      }
+
+      /* CAROUSEL */
+      .hero-carousel {
+        max-height: 80vh;
+        overflow: hidden;
+      }
+
+      .hero-carousel .carousel-item img {
+        height: 80vh;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .hero-carousel .carousel-caption {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0.2)
+        );
+        border-radius: 1rem;
+        padding: 1.5rem;
+      }
+
+      .hero-carousel .carousel-caption h5 {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      .hero-carousel .carousel-caption p {
+        font-size: 0.95rem;
+      }
+
+      /* HERO SECTION */
+      .hero-section {
+        position: relative;
+        padding: 60px 0;
+        margin-top: 15px;
+        overflow: hidden;
+        background: #a29e62; /* Base color from old design */
+      }
+
+      /* Background overlay with image (old code integrated) */
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('images/hero.jpg') center/cover no-repeat;
+        opacity: 0.55; /* soft overlay */
+        z-index: 1;
+      }
+
+      /* Make sure all content stays above overlay */
+      .hero-section .container,
+      .hero-section .row,
+      .hero-title,
+      .hero-section p,
+      .hero-image-wrapper {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ---------------------------------------------
+   LEFT SIDE TEXT
+---------------------------------------------- */
+
+      .hero-title {
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        animation: slideFromLeft 1s ease-out forwards;
+        opacity: 0;
+        animation-delay: 0.2s;
+      }
+
+      .hero-section p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #222;
+        animation: slideFromLeft 1.2s ease-out forwards;
+        opacity: 0;
+        animation-delay: 0.35s;
+      }
+
+      .hero-highlight {
+        font-weight: 600;
+        color: #000;
+      }
+
+      /* ---------------------------------------------
+   RIGHT SIDE IMAGE (Diagonal Clip)
+---------------------------------------------- */
+
+      .hero-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        animation: slideFromRight 1s ease-out forwards;
+        opacity: 0;
+        animation-delay: 0.35s;
+
+        clip-path: polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%);
+      }
+
+      .hero-image-main {
+        width: 100%;
+        height: 100%;
+        border-radius: 0; /* Removed because clip-path already shapes */
+        object-fit: cover;
+        clip-path: polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%);
+      }
+
+      /* ---------------------------------------------
+   ANIMATIONS
+---------------------------------------------- */
+
+      @keyframes slideFromLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideFromRight {
+        0% {
+          opacity: 0;
+          transform: translateX(60px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ---------------------------------------------
+   RESPONSIVE
+---------------------------------------------- */
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 40px 0;
+        }
+
+        .hero-title {
+          font-size: 1.9rem;
+          text-align: center;
+        }
+
+        .hero-section p {
+          text-align: center;
+          font-size: 1rem;
+        }
+
+        .hero-image-wrapper {
+          clip-path: none !important;
+        }
+
+        .hero-image-main {
+          clip-path: none !important;
+          border-radius: 12px;
+        }
+
+        .hero-badge {
+          bottom: 10px;
+          right: 10px;
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 1.6rem;
+        }
+      }
+
+      /* SERVICES / ACTIVITIES */
+      .services {
+        padding: 3.5rem 0;
+        background-color: rgb(243, 232, 218);
+      }
+
+      .services h2 {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .services-sub {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 2rem;
+        color: #373535;
+      }
+
+      .service-box {
+        background-color: hwb(0 100% 0%);
+        border-radius: 1rem;
+        padding: 1rem 1.25rem 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-box img {
+        border-radius: 0.65rem;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 0.9rem;
+      }
+
+      .service-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .service-box p {
+        font-size: 0.93rem;
+        color: #555;
+        flex: 1;
+      }
+
+      .service-box:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
+      }
+
+      /* WELFARE SECTION */
+      .containerrs {
+        padding: 3.5rem 0;
+        background: #dedcbf;
+      }
+
+      .containerrs h1 {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.8rem;
+      }
+
+      .welfare-item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .welfare-item-2 {
+        flex-direction: row-reverse;
+      }
+
+      .welfare-image-container {
+        flex: 1 1 280px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .welfare-text-container {
+        flex: 1 1 320px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .welfare-image {
+        width: 100%;
+        border-radius: 1.2rem;
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
+        object-fit: cover;
+        max-height: 320px;
+      }
+
+      .project-title {
+        font-size: 1.35rem;
+        margin-bottom: 0.75rem;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .description {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      .stats {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .stats li {
+        font-size: 0.95rem;
+        background: var(--light-bg);
+        border-radius: 999px;
+        padding: 0.7rem 1.2rem;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.3rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      }
+
+      .counter {
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+      }
+
+      /* Animation when visible */
+      .welfare-image-container.animate-now,
+      .welfare-text-container.animate-now {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .view-more {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .view-more-btn {
+        display: inline-block;
+        padding: 0.75rem 1.8rem;
+        border-radius: 999px;
+        background: var(--primary-color);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .view-more-btn:hover {
+        background: var(--primary-dark);
+        color: #fff;
+      }
+
+      /* FOOTER */
+      .footer {
+        background: #02181a;
+        color: #f3f3f3;
+        padding-top: 3rem;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .footer-col p,
+      .footer-col a {
+        font-size: 0.9rem;
+        color: #d0d0d0;
+      }
+
+      .footer-col a:hover {
+        color: #ffffff;
+      }
+
+      .footer-logo {
+        width: 80px;
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-tagline {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #d0d0d0;
+      }
+
+      .footer-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .footer-list li {
+        margin-bottom: 0.4rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+
+      .fa-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 0.85rem;
+        transition: all 0.25s ease;
+      }
+
+      .fa-icon:hover {
+        background: #57a87b;
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .footer-btn-container {
+        margin-top: 1rem;
+      }
+
+      .footer-btn {
+        display: inline-block;
+        padding: 0.55rem 1.5rem;
+        border-radius: 999px;
+        background: var(--primary-color);
+        color: #fff !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .footer-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        padding: 0.9rem 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #cfd3d4;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 992px) {
+        .footer-container {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding-top: 2.5rem;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+          font-size: 1.6rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        body {
+          padding-top: 72px;
+        }
+
+        .hero-carousel .carousel-item img {
+          height: 60vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="Sri Satya Sai logo" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3 gap-2"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="resourcesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <li>
+                  <a class="dropdown-item" href="gallery.html">Gallery</a>
+                </li>
+                <li><a class="dropdown-item" href="goals.html">News</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="supportDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Support Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+                <li>
+                  <a class="dropdown-item" href="partnerships.html"
+                    >Partnerships</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="vision.html">Volunteering</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="goals.html">Donations</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="recoginition.html">Recognitions</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="workDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Our Work
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                <li>
+                  <a class="dropdown-item" href="projectDone.html"
+                    >Activities</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="expenses.html">Expenses</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="achievements.html"
+                    >Achievements</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contactUs.html">Contact Us</a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+              <a href="goals.html" class="btn btn-donate">❤️ DONATE</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <span>
+          Welcome to Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye
+          Hospital • Vision for All — Free Eye Care Initiative • Welcome to
+          Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye Hospital •
+          Vision for All — Free Eye Care Initiative •
+        </span>
+      </div>
+    </div>
+
+    <main>
+      <!-- BOOTSTRAP CAROUSEL WITH FADE -->
+      <div
+        id="mainCarousel"
+        class="carousel slide carousel-fade hero-carousel"
+        data-bs-ride="carousel"
+        data-bs-interval="3000"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="images/crausal1.jpg"
+              class="d-block w-100"
+              alt="Slide 1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="images/crausal2.jpg"
+              class="d-block w-100"
+              alt="Slide 2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="images/crausal3.jpg"
+              class="d-block w-100"
+              alt="Slide 3"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="images/medical3.jpg"
+              class="d-block w-100"
+              alt="Slide 4"
+            />
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#mainCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#mainCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="row align-items-center gy-4">
+            <div class="col-lg-6">
+              <h1 class="hero-title">SRI SATYA SAI SANJEEVANI EYE HOSPITAL</h1>
+              <p>
+                We provide free, accessible eye-care services to underprivileged
+                and socio-economically weaker communities. Our mission is to
+                prevent avoidable blindness through cataract surgeries,
+                awareness programs, and regular eye check-ups.
+              </p>
+              <p>
+                We aim to build a
+                <span class="hero-highlight">super specialty eye hospital</span>
+                offering advanced treatment for various eye diseases, ensuring
+                quality vision care for all.
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-image-wrapper">
+                <img
+                  src="images/hero.jpg"
+                  alt="Girls walking"
+                  class="hero-image-main"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVITIES / SERVICES -->
+      <section class="services">
+        <div class="container">
+          <h2>Our Activities</h2>
+          <p class="services-sub">
+            Delivering essential, free eye-care services to restore vision and
+            support underprivileged communities.
+          </p>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="service-box">
+                <img src="images/opd-01.jpg" alt="OPD & Diagnosis" />
+                <h3>OPD & Diagnosis</h3>
+                <p>
+                  Free eye check-ups with expert doctors for early detection of
+                  eye issues.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="service-box">
+                <img src="images/cataract.jpg" alt="Cataract Surgery" />
+                <h3>Cataract Surgery</h3>
+                <p>
+                  Free cataract and essential surgeries to restore eyesight.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="service-box">
+                <img src="images/serve3.jpg" alt="Food Distribution" />
+                <h3>Food Distribution</h3>
+                <p>
+                  Committed to “Feeding the Hungry”, we deliver healthy meals to
+                  patients’ caretakers, the elderly, and economically weaker
+                  communities.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="service-box">
+                <img src="images/health.jpeg" alt="Awareness Programs" />
+                <h3>Awareness Programs</h3>
+                <p>
+                  Educating communities about eye health and preventive care.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="service-box">
+                <img src="images/merriage5.jpg" alt="Mass Marriage" />
+                <h3>Mass Marriage</h3>
+                <p>
+                  Uniting couples from all communities through a dignified,
+                  free-of-cost mass marriage ceremony.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="service-box">
+                <img src="images/sports.jpg" alt="Sports Activities" />
+                <h3>Sports Activities</h3>
+                <p>
+                  Encouraging children and young adults to channel their energy
+                  into healthy, productive, and goal-oriented activities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL WELFARE -->
+      <section class="containerrs">
+        <div class="container">
+          <h1>SOCIALS WORK</h1>
+
+          <!-- Item 1 -->
+          <div class="welfare-item welfare-item-1">
+            <div class="welfare-image-container">
+              <img
+                src="images/merriage2.jpg"
+                class="welfare-image"
+                alt="Mass Marriage"
+              />
+            </div>
+            <div class="welfare-text-container">
+              <h2 class="project-title">
+                Social Welfare: Multi-Religion Mass Marriage
+              </h2>
+              <p class="description">
+                A large-scale initiative promoting unity and equality by
+                organizing mass marriages across religions.
+              </p>
+              <ul class="stats">
+                <li>
+                  <span class="counter" data-target="1500">0</span>+ couples
+                  married
+                </li>
+                <li>
+                  <span class="counter" data-target="20">0</span>+
+                  second-generation marriages
+                </li>
+                <li>
+                  <span class="counter" data-target="90">0</span>% reduction in
+                  dowry deaths
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="welfare-item welfare-item-2">
+            <div class="welfare-text-container">
+              <h2 class="project-title">
+                Social Welfare: Feed the Hungry (Narayana Seva)
+              </h2>
+              <p class="description">
+                A daily food distribution program serving nutritious meals to
+                the underprivileged.
+              </p>
+              <ul class="stats">
+                <li>
+                  <span class="counter" data-target="15000">0</span> relatives
+                  fed
+                </li>
+                <li>
+                  <span class="counter" data-target="800">0</span> kg food
+                  served daily
+                </li>
+                <li>
+                  <span class="counter" data-target="35">0</span> years of seva
+                </li>
+              </ul>
+            </div>
+
+            <div class="welfare-image-container">
+              <img
+                src="images/serve2.jpg"
+                class="welfare-image"
+                alt="Feed the Hungry"
+              />
+            </div>
+          </div>
+
+          <div class="view-more">
+            <a href="gallery.html" class="view-more-btn"
+              >View More Activities</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-container">
+          <!-- Column 1 -->
+          <div class="footer-col">
+            <img
+              src="images/logo.png"
+              alt="Hospital Logo"
+              class="footer-logo"
+            />
+            <h3>Satchikitsa Prasarak Mandal</h3>
+            <p><strong>Sri Satya Sai Sanjeevani Eye Hospital</strong></p>
+            <p>
+              Shri Satya Sai Vidya Nagari,<br />
+              Dr. Nandurkar Vidyalaya Campus,<br />
+              Yavatmal, Maharashtra - 445001.
+            </p>
+            <p class="footer-tagline">
+              Vision for All — Free Eye Care &amp; Social Service Initiative
+            </p>
+
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/"
+                class="fa-icon"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/"
+                class="fa-icon"
+                aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/"
+                class="fa-icon"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/"
+                class="fa-icon"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/"
+                class="fa-icon"
+                aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="footer-col">
+            <h4>About Us</h4>
+            <ul class="footer-list">
+              <li><a href="about.html">Who We Are</a></li>
+              <li><a href="about.html">Vision &amp; Mission</a></li>
+              <li><a href="about.html">Goals &amp; Objectives</a></li>
+              <li><a href="about.html">Leadership Team</a></li>
+              <li><a href="achievements.html">Achievements</a></li>
+            </ul>
+
+            <h4 style="margin-top: 18px">Resources</h4>
+            <ul class="footer-list">
+              <li><a href="news.html">News</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="partnerships.html">Partnerships</a></li>
+              <li><a href="gallery.html">Volunteering</a></li>
+              <li><a href="news.html">Donation</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="footer-col">
+            <h4>Our Work</h4>
+            <ul class="footer-list">
+              <li><a href="projectDone.html">Social Services</a></li>
+              <li><a href="projectDone.html">Religious Mass Marriages</a></li>
+              <li><a href="projectDone.html">Sports Achievements</a></li>
+              <li><a href="projectDone.html">Health Camps</a></li>
+              <li>
+                <a href="projectDone.html">Events &amp; Cultural Activities</a>
+              </li>
+            </ul>
+
+            <h4 style="margin-top: 18px">Certificates</h4>
+            <ul class="footer-list">
+              <li><a href="achievements.html">Achievements</a></li>
+              <li><a href="expenses.html">Expenses</a></li>
+              <li><a href="recoginition.html">Recoginition</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4 -->
+          <div class="footer-col">
+            <h4>Contact Details</h4>
+            <p>
+              Email:<br />
+              <a href="mailto:prakashnandurkar9575@gmail.com"
+                >prakashnandurkar9575@gmail.com</a
+              ><br />
+              <a href="mailto:spmtrustytl@gmail.com">spmtrustytl@gmail.com</a>
+            </p>
+
+            <p>
+              Phone:<br />
+              <a href="tel:+919011503530">9011503530</a>,
+              <a href="tel:+919763448555">9763448555</a>
+            </p>
+
+            <p><strong>Secretary:</strong><br />Dr. Prakash Nandurkar</p>
+
+            <h4 style="margin-top: 18px">Major Donors</h4>
+            <ul class="footer-list">
+              <li>
+                <a href="https://www.nseindia.com/"
+                  >National Stock Exchange, Mumbai</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.owenscorning.com/en-in/composites/showcases/india"
+                  >Owens Corning India</a
+                >
+              </li>
+              <li><a href="https://ekam.ngo/">Ekam Foundation</a></li>
+              <li>
+                <a href="https://www.bv.com/">Black &amp; Veatch Pvt. Ltd.</a>
+              </li>
+            </ul>
+
+            <div class="footer-btn-container">
+              <a href="contactUs.html" class="footer-btn">Contact Us</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            © 2025 SPM — Sri Satya Sai Sanjeevani Eye Hospital | Designed &
+            Developed by <b>Guru Software Solutions</b> All Rights Reserved
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      /* Counter Animation */
+      document.addEventListener('DOMContentLoaded', () => {
+        function animateCounters() {
+          const counters = document.querySelectorAll('.counter')
+
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target')
+            const speed = 200
+            const increment = target / speed
+
+            const li = counter.closest('li')
+            if (li) li.classList.add('js-data', 'animating')
+
+            const updateCount = () => {
+              const current = +counter.innerText
+
+              if (current < target) {
+                counter.innerText = Math.ceil(current + increment)
+                setTimeout(updateCount, 20)
+              } else {
+                counter.innerText = target
+                if (li) {
+                  setTimeout(() => li.classList.remove('animating'), 600)
+                }
+              }
+            }
+
+            updateCount()
+          })
+        }
+
+        const section = document.querySelector('.containerrs')
+        if (!section) return
+
+        let started = false
+
+        const observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !started) {
+                started = true
+
+                // Trigger Counter
+                animateCounters()
+
+                // Trigger Animations
+                const animatedElements = section.querySelectorAll(
+                  '.welfare-image-container, .welfare-text-container'
+                )
+
+                animatedElements.forEach(el => {
+                  el.classList.add('animate-now')
+                })
+
+                observer.disconnect()
+              }
+            })
+          },
+          {
+            threshold: 0.3 // start when 30% of section is visible
+          }
+        )
+
+        observer.observe(section)
+      })
+    </script>
+  </body>
+</html>

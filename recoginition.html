@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recognition & Certificates | SPM Trust</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Global site styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-color: #0b6b71;
+        --accent-gold: #c3aa31;
+        --light-bg: #f4f7fb;
+        --text-color: #222;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: var(--light-bg);
+        color: var(--text-color);
+        padding-top: 115px; /* for fixed navbar */
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /* ================= NAVBAR (Bootstrap) ================= */
+      .navbar {
+        background: linear-gradient(to right, #ffffff, var(--accent-gold));
+        width: 100%;
+        padding: 0 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .navbar-brand img.logo {
+        width: 120px;
+        height: auto;
+        padding: 6px;
+        border-radius: 8px;
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 530;
+        font-size: 17px;
+        padding: 12px 16px;
+        color: #150404 !important;
+        transition: 0.3s ease;
+        border-radius: 6px;
+      }
+
+      .navbar-nav .nav-link:hover {
+        background: #d0b906;
+        color: #000 !important;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #d44570 !important;
+      }
+
+      .navbar-nav .dropdown-toggle::after {
+        margin-left: 5px;
+        vertical-align: 2px;
+      }
+
+      .navbar .dropdown-menu {
+        background: #c09919;
+        border-radius: 8px;
+        border: none;
+        padding: 0.3rem 0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .navbar .dropdown-item {
+        color: #1a0d0d;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: 0.3s ease;
+      }
+
+      .navbar .dropdown-item:hover {
+        background: #e5b70a;
+        color: #fff !important;
+      }
+
+      .btn-donate {
+        background: #0b6b71;
+        color: white !important;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+
+      .btn-donate:hover {
+        background: #064449;
+      }
+
+      .navbar-toggler {
+        border: none !important;
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .navbar-nav {
+        gap: 0.15rem;
+      }
+
+      @media (max-width: 576px) {
+        body {
+          padding-top: 120px;
+        }
+      }
+
+      /* ================= MARQUEE ================= */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        background: var(--primary-color);
+        padding: 8px 0;
+        position: relative;
+      }
+
+      .marquee-track {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scrollLoop 15s linear infinite;
+      }
+
+      .marquee-track span {
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+      }
+
+      @keyframes scrollLoop {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .marquee-track span {
+          font-size: 13px;
+        }
+        .marquee-container {
+          padding: 5px 0;
+        }
+      }
+
+      /* ================= PAGE TITLES / SECTIONS ================= */
+      .page-title {
+        text-align: center;
+        color: var(--primary-color);
+        font-size: 32px;
+        font-weight: 700;
+        margin: 30px 0 10px;
+      }
+
+      .section-title {
+        font-size: 22px;
+        color: var(--primary-color);
+        margin-top: 35px;
+        margin-bottom: 15px;
+        border-left: 6px solid var(--primary-color);
+        padding-left: 12px;
+        font-weight: 600;
+      }
+
+      /* ================= IMAGE CARDS ================= */
+      .doc-card img {
+        width: 100%;
+        height: 340px;
+        object-fit: contain;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .doc-card img:hover {
+        transform: scale(1.03);
+      }
+
+      /* Modals */
+      .modal-body img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .back-btn {
+        background: var(--primary-color);
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 15px;
+        border: none;
+      }
+
+      .back-btn:hover {
+        background: #084b50;
+      }
+
+      @media (max-width: 768px) {
+        .doc-card img {
+          height: 280px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .doc-card img {
+          height: 240px;
+        }
+      }
+
+      /* ================= FOOTER (Footer A from previous file) ================= */
+      .footer {
+        background: #02181a;
+        color: #f3f3f3;
+        padding-top: 3rem;
+        margin-top: 3rem;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .footer-col h3,
+      .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+
+      .footer-col p,
+      .footer-col a {
+        font-size: 0.9rem;
+        color: #d0d0d0;
+      }
+
+      .footer-col a:hover {
+        color: #ffffff;
+      }
+
+      .footer-logo {
+        width: 80px;
+        margin-bottom: 0.75rem;
+        border-radius: 10px;
+        background-color: #e1ddcf;
+        padding: 8px;
+        object-fit: contain;
+      }
+
+      .footer-tagline {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #d0d0d0;
+      }
+
+      .footer-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .footer-list li {
+        margin-bottom: 0.4rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .fa-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 0.85rem;
+        transition: all 0.25s ease;
+      }
+
+      .fa-icon:hover {
+        background: #57a87b;
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .footer-btn-container {
+        margin-top: 1rem;
+      }
+
+      .footer-btn {
+        display: inline-block;
+        padding: 0.55rem 1.5rem;
+        border-radius: 999px;
+        background: var(--primary-color);
+        color: #fff !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: none;
+      }
+
+      .footer-btn:hover {
+        background: #084b50;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        padding: 0.9rem 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #cfd3d4;
+      }
+
+      @media (max-width: 992px) {
+        .footer-container {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR (Bootstrap version, same as other modern pages) -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="Sri Satya Sai logo" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3 gap-2"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="resourcesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <li>
+                  <a class="dropdown-item" href="gallery.html">Gallery</a>
+                </li>
+                <li><a class="dropdown-item" href="goals.html">News</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="supportDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Support Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+                <li>
+                  <a class="dropdown-item" href="partnerships.html"
+                    >Partnerships</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="vision.html">Volunteering</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="goals.html">Donations</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="recoginition.html"
+                >Recognitions</a
+              >
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="workDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Our Work
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                <li>
+                  <a class="dropdown-item" href="projectDone.html"
+                    >Activities</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="expenses.html">Expenses</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="achievements.html"
+                    >Achievements</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contactUs.html">Contact Us</a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+              <a href="goals.html" class="btn btn-donate">❤️ DONATE</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <span>
+          Welcome to Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye
+          Hospital • Vision for All — Free Eye Care Initiative • Welcome to
+          Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye Hospital •
+          Vision for All — Free Eye Care Initiative •
+        </span>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container mt-4 mb-5">
+      <h1 class="page-title">Official Documents of SPM Trust</h1>
+
+      <!-- PAN CARD -->
+      <h2 class="section-title">PAN Card</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 doc-card">
+          <img
+            src="images/pan.png"
+            alt="PAN Card"
+            data-bs-toggle="modal"
+            data-bs-target="#modalPan"
+          />
+        </div>
+      </div>
+
+      <!-- Modal PAN -->
+      <div class="modal fade" id="modalPan" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button class="back-btn mb-3" data-bs-dismiss="modal">
+                ← Back
+              </button>
+              <img src="images/pan.png" alt="PAN Card Full View" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANNEXURE DOCUMENTS -->
+      <h2 class="section-title">Annexure Documents</h2>
+      <div class="row g-4">
+        <div class="col-md-4 doc-card">
+          <img
+            src="images/annexure-1.png"
+            alt="Annexure 1"
+            data-bs-toggle="modal"
+            data-bs-target="#modalAnn1"
+          />
+        </div>
+        <div class="col-md-4 doc-card">
+          <img
+            src="images/annexure-2.png"
+            alt="Annexure 2"
+            data-bs-toggle="modal"
+            data-bs-target="#modalAnn2"
+          />
+        </div>
+        <div class="col-md-4 doc-card">
+          <img
+            src="images/annexure-3.png"
+            alt="Annexure 3"
+            data-bs-toggle="modal"
+            data-bs-target="#modalAnn3"
+          />
+        </div>
+      </div>
+
+      <!-- Annexure Modals -->
+      <div class="modal fade" id="modalAnn1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button class="back-btn mb-3" data-bs-dismiss="modal">
+                ← Back
+              </button>
+              <img src="images/annexure-1.png" alt="Annexure 1 Full View" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalAnn2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button class="back-btn mb-3" data-bs-dismiss="modal">
+                ← Back
+              </button>
+              <img src="images/annexure-2.png" alt="Annexure 2 Full View" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalAnn3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button class="back-btn mb-3" data-bs-dismiss="modal">
+                ← Back
+              </button>
+              <img src="images/annexure-3.png" alt="Annexure 3 Full View" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REGISTRATION CERTIFICATES -->
+      <h2 class="section-title">Registration Certificates</h2>
+      <div class="row g-4">
+        <div class="col-md-6 doc-card">
+          <img
+            src="images/registration.png"
+            alt="Registration Certificate"
+            data-bs-toggle="modal"
+            data-bs-target="#modalReg"
+          />
+        </div>
+        <div class="col-md-6 doc-card">
+          <img
+            src="images/tax.png"
+            alt="Tax Certificate"
+            data-bs-toggle="modal"
+            data-bs-target="#modalTax"
+          />
+        </div>
+      </div>
+
+      <!-- Registration Modals -->
+      <div class="modal fade" id="modalReg" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button class="back-btn mb-3" data-bs-dismiss="modal">
+                ← Back
+              </button>
+              <img
+                src="images/registration.png"
+                alt="Registration Certificate Full View"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalTax" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <button class="back-btn mb-3" data-bs-dismiss="modal">
+                ← Back
+              </button>
+              <img src="images/tax.png" alt="Tax Certificate Full View" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER (Footer A, same as your modern pages) -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Column 1: Logo + Trust Info -->
+        <div class="footer-col">
+          <img src="images/logo.png" alt="Hospital Logo" class="footer-logo" />
+          <h3>Satchikitsa Prasarak Mandal</h3>
+          <p><strong>Sri Satya Sai Sanjeevani Eye Hospital</strong></p>
+          <p>
+            Shri Satya Sai Vidya Nagari,<br />
+            Dr. Nandurkar Vidyalaya Campus,<br />
+            Yavatmal, Maharashtra - 445001.
+          </p>
+          <p class="footer-tagline">
+            Vision for All — Free Eye Care & Social Service Initiative
+          </p>
+
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/"
+              class="fa-icon"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://twitter.com/" class="fa-icon" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              class="fa-icon"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/"
+              class="fa-icon"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.youtube.com/"
+              class="fa-icon"
+              aria-label="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <ul class="footer-list">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="about.html">Vision & Mission</a></li>
+            <li><a href="about.html">Goals & Objectives</a></li>
+            <li><a href="about.html">Leadership Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Resources</h4>
+          <ul class="footer-list">
+            <li><a href="news.html">News</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="gallery.html">Volunteering</a></li>
+            <li><a href="news.html">Donation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+          <h4>Our Work</h4>
+          <ul class="footer-list">
+            <li><a href="projectDone.html">Social Services</a></li>
+            <li><a href="projectDone.html">Religious Mass Marriages</a></li>
+            <li><a href="projectDone.html">Sports Achievements</a></li>
+            <li><a href="projectDone.html">Health Camps</a></li>
+            <li>
+              <a href="projectDone.html">Events & Cultural Activities</a>
+            </li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Certificates</h4>
+          <ul class="footer-list">
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="expenses.html">Expenses</a></li>
+            <li><a href="recoginition.html">Recoginition</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact + Donors -->
+        <div class="footer-col">
+          <h4>Contact Details</h4>
+          <p>
+            Email:<br />
+            <a href="mailto:prakashnandurkar9575@gmail.com"
+              >prakashnandurkar9575@gmail.com</a
+            ><br />
+            <a href="mailto:spmtrustytl@gmail.com">spmtrustytl@gmail.com</a>
+          </p>
+
+          <p>
+            Phone:<br />
+            <a href="tel:+919011503530">9011503530</a>,
+            <a href="tel:+919763448555">9763448555</a>
+          </p>
+
+          <p><strong>Secretary:</strong><br />Dr. Prakash Nandurkar</p>
+
+          <h4 style="margin-top: 18px">Major Donors</h4>
+          <ul class="footer-list">
+            <li>
+              <a href="https://www.nseindia.com/"
+                >National Stock Exchange, Mumbai</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.owenscorning.com/en-in/composites/showcases/india"
+                >Owens Corning India</a
+              >
+            </li>
+            <li><a href="https://ekam.ngo/">Ekam Foundation</a></li>
+            <li>
+              <a href="https://www.bv.com/">Black & Veatch Pvt. Ltd.</a>
+            </li>
+          </ul>
+
+          <div class="footer-btn-container">
+            <a href="contactUs.html" class="footer-btn">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 SPM — Sri Satya Sai Sanjeevani Eye Hospital | Designed &
+          Developed by <b>Guru Software Solutions</b> All Rights Reserved
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

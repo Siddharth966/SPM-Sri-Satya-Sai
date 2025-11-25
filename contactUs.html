@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Sri Satya Sai Sanjeevani Eye Hospital</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #0b6b71;
+        --primary-dark: #064449;
+        --accent-gold: #c3aa31;
+        --light-bg: #eef7f7;
+        --text-color: #222;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--light-bg);
+        color: var(--text-color);
+        padding-top: 115px; /* space for fixed navbar */
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /* ================= NAVBAR (Bootstrap) ================= */
+      .navbar {
+        background: linear-gradient(to right, white, #c3aa31);
+        width: 100%;
+        padding: 0 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .navbar-brand img.logo {
+        width: 120px;
+        height: auto;
+        padding: 6px;
+        border-radius: 8px;
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 530;
+        font-size: 17px;
+        padding: 12px 16px;
+        color: #150404 !important;
+        transition: 0.3s ease;
+        border-radius: 6px;
+      }
+
+      .navbar-nav .nav-link:hover {
+        background: #d0b906;
+        color: #000 !important;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #d44570 !important;
+      }
+
+      .navbar-nav .dropdown-toggle::after {
+        margin-left: 5px;
+        vertical-align: 2px;
+      }
+
+      .navbar .dropdown-menu {
+        background: #c09919;
+        border-radius: 8px;
+        border: none;
+        padding: 0.3rem 0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .navbar .dropdown-item {
+        color: #1a0d0d;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: 0.3s ease;
+      }
+
+      .navbar .dropdown-item:hover {
+        background: #e5b70a;
+        color: #fff !important;
+      }
+
+      .btn-donate {
+        background: #0b6b71;
+        color: white !important;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+
+      .btn-donate:hover {
+        background: #064449;
+      }
+
+      .navbar-toggler {
+        border: none !important;
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .navbar-nav {
+        gap: 0.15rem;
+      }
+
+      /* show toggler icon correctly */
+      .navbar-light .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      @media (max-width: 576px) {
+        body {
+          padding-top: 140px; /* taller navbar in mobile */
+        }
+      }
+
+      /* ================= MARQUEE ================= */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        background: var(--primary-color);
+        padding: 8px 0;
+        position: relative;
+      }
+
+      .marquee-track {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scrollLoop 15s linear infinite;
+      }
+
+      .marquee-track span {
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+      }
+
+      @keyframes scrollLoop {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .marquee-track span {
+          font-size: 13px;
+        }
+        .marquee-container {
+          padding: 5px 0;
+        }
+      }
+
+      /* ============== PAGE HEADER ============== */
+      .page-header-wrapper {
+        padding: 2.2rem 0 1rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .page-subtitle {
+        color: #555;
+        font-size: 0.98rem;
+        max-width: 720px;
+        margin: 0.25rem auto 0;
+      }
+
+      /* ============== CONTACT SECTION ============== */
+      .contact-wrapper {
+        margin-bottom: 2.5rem;
+      }
+
+      .contact-card {
+        background: #f8f5e9;
+        border-radius: 1.2rem;
+        padding: 1.8rem 1.6rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid var(--primary-color);
+      }
+
+      .info-card,
+      .form-card {
+        background: #f6fbfb;
+        border-radius: 1.1rem;
+        padding: 1.7rem 1.5rem;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(11, 107, 113, 0.08);
+        height: 100%;
+      }
+
+      .info-card h2,
+      .form-card h2 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .info-item {
+        margin-bottom: 0.9rem;
+        font-size: 0.96rem;
+        color: #333;
+      }
+
+      .info-item i {
+        color: var(--primary-color);
+        margin-right: 10px;
+        width: 18px;
+      }
+
+      .info-item strong {
+        color: #111;
+      }
+
+      /* override social-links for this page (same look as footer icons) */
+      .contact-social {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .contact-social .fa-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(11, 107, 113, 0.3);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        background: #ffffff;
+        transition: 0.25s ease;
+      }
+
+      .contact-social .fa-icon:hover {
+        background: #c1fff7;
+        transform: translateY(-3px);
+        color: #064449;
+      }
+
+      /* Contact form */
+      .form-card form {
+        margin-top: 0.3rem;
+      }
+
+      .form-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .form-control,
+      .form-control:focus {
+        border-radius: 0.7rem;
+        border-color: #80a5a5;
+        box-shadow: none;
+        font-size: 0.94rem;
+      }
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .btn-submit {
+        background: #378506;
+        color: white;
+        padding: 0.65rem 1.6rem;
+        border-radius: 0.8rem;
+        font-size: 0.98rem;
+        font-weight: 600;
+        border: none;
+        transition: 0.25s ease;
+      }
+
+      .btn-submit:hover {
+        background: #0d6b28;
+        transform: translateY(-2px);
+      }
+
+      .success-msg {
+        display: none;
+        color: #127c16;
+        margin-top: 0.6rem;
+        font-weight: 600;
+        font-size: 0.92rem;
+      }
+
+      /* custom validation feedback */
+      .was-validated .form-control:invalid {
+        border-color: #dc3545;
+      }
+
+      .was-validated .form-control:valid {
+        border-color: #198754;
+      }
+
+      .validation-error {
+        display: none;
+        font-size: 0.8rem;
+        color: #dc3545;
+        margin-top: 0.15rem;
+      }
+
+      .show-error {
+        display: block;
+      }
+
+      /* MAP SECTION */
+      .map-wrapper {
+        margin-top: 2rem;
+        border-radius: 1.1rem;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .map-wrapper iframe {
+        width: 100%;
+        height: 420px;
+        border: 0;
+      }
+
+      /* ============== SIMPLE FADE-UP ANIMATION ============== */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ================== FOOTER (same as partnerships.html) ================== */
+      .footer {
+        background: #02181a;
+        color: #f3f3f3;
+        padding-top: 3rem;
+        margin-top: 3rem;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .footer-col p,
+      .footer-col a {
+        font-size: 0.9rem;
+        color: #d0d0d0;
+      }
+
+      .footer-col a:hover {
+        color: #ffffff;
+      }
+
+      .footer-logo {
+        width: 80px;
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-tagline {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #d0d0d0;
+      }
+
+      .footer-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .footer-list li {
+        margin-bottom: 0.4rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+
+      .fa-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 0.85rem;
+        transition: all 0.25s ease;
+      }
+
+      .fa-icon:hover {
+        background: #57a87b;
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .footer-btn-container {
+        margin-top: 1rem;
+      }
+
+      .footer-btn {
+        display: inline-block;
+        padding: 0.55rem 1.5rem;
+        border-radius: 999px;
+        background: var(--primary-color);
+        color: #fff !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .footer-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        padding: 0.9rem 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #cfd3d4;
+      }
+
+      @media (max-width: 992px) {
+        .footer-container {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        body {
+          padding-top: 120px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="Sri Satya Sai logo" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3 gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="resourcesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <li>
+                  <a class="dropdown-item" href="gallery.html">Gallery</a>
+                </li>
+                <li><a class="dropdown-item" href="goals.html">News</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="supportDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Support Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+                <li>
+                  <a class="dropdown-item" href="partnerships.html"
+                    >Partnerships</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="vision.html">Volunteering</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="goals.html">Donations</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="recoginition.html">Recognitions</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="workDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Our Work
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                <li>
+                  <a class="dropdown-item" href="projectDone.html"
+                    >Activities</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="expenses.html">Expenses</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="achievements.html"
+                    >Achievements</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="contactUs.html">Contact Us</a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+              <a href="goals.html" class="btn btn-donate">❤️ DONATE</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <span>
+          Welcome to Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye
+          Hospital • Vision for All — Free Eye Care Initiative • Welcome to
+          Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye Hospital •
+          Vision for All — Free Eye Care Initiative •
+        </span>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="container contact-wrapper">
+        <!-- PAGE HEADER -->
+        <div class="page-header-wrapper text-center fade-up">
+          <h1 class="page-title">Contact Us</h1>
+          <p class="page-subtitle">
+            Reach out to Sri Satya Sai Sanjeevani Eye Hospital — we’re here to
+            help with enquiries, partnerships, volunteering and patient support.
+          </p>
+        </div>
+
+        <!-- INTRO CARD (OPTIONAL MESSAGE) -->
+        <section class="mb-4 fade-up">
+          <div class="contact-card">
+            <p>
+              For any questions about our services, free eye-care initiatives,
+              partnerships, CSR collaboration or volunteering opportunities,
+              please fill out the form below or contact us directly using the
+              details provided.
+            </p>
+          </div>
+        </section>
+
+        <!-- CONTACT GRID -->
+        <section class="fade-up">
+          <div class="row g-4">
+            <!-- Contact Info -->
+            <div class="col-md-5">
+              <div class="info-card">
+                <h2>Get in Touch</h2>
+
+                <div class="info-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Shri Satya Sai Vidya Nagari,<br />
+                  Dr. Nandurkar Vidyalaya Campus,<br />
+                  Yavatmal, Maharashtra - 445001.
+                </div>
+
+                <div class="info-item">
+                  <i class="fas fa-envelope"></i>
+                  prakashnandurkar9575@gmail.com<br />
+                  spmtrustytl@gmail.com
+                </div>
+
+                <div class="info-item">
+                  <i class="fas fa-phone"></i>
+                  9011503530, 9763448555
+                </div>
+
+                <div class="info-item">
+                  <i class="fas fa-user"></i>
+                  Secretary:
+                  <strong>Dr. Prakash Nandurkar</strong>
+                </div>
+
+                <div class="info-item">
+                  <i class="fas fa-clock"></i>
+                  Timings:
+                  <strong> Mon – Sat, 9:00 AM to 6:00 PM</strong>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="contact-social">
+                  <a href="https://facebook.com" class="fa-icon"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="https://twitter.com" class="fa-icon"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="https://instagram.com" class="fa-icon"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="https://linkedin.com" class="fa-icon"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                  <a href="https://youtube.com" class="fa-icon"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                  <a href="https://wa.me/919011503530" class="fa-icon"
+                    ><i class="fab fa-whatsapp"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-md-7">
+              <div class="form-card">
+                <h2>Send us a Message</h2>
+
+                <form id="contactForm" novalidate>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="form-control"
+                      required
+                      minlength="3"
+                      placeholder="Enter your full name" />
+                    <div class="validation-error" id="nameError">
+                      Please enter at least 3 characters.
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      required
+                      placeholder="name@example.com" />
+                    <div class="validation-error" id="emailError">
+                      Please enter a valid email address.
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      class="form-control"
+                      required
+                      pattern="[0-9]{10}"
+                      placeholder="10-digit mobile number" />
+                    <div class="validation-error" id="mobileError">
+                      Please enter a valid 10-digit mobile number.
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="form-control"
+                      required
+                      minlength="3"
+                      placeholder="Subject of your message" />
+                    <div class="validation-error" id="subjectError">
+                      Please enter at least 3 characters.
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      class="form-control"
+                      required
+                      minlength="10"
+                      placeholder="Write your message here"></textarea>
+                    <div class="validation-error" id="messageError">
+                      Please enter at least 10 characters.
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn-submit">
+                    Send Message
+                  </button>
+
+                  <p class="success-msg" id="successMsg">
+                    ✅ Thank you! Your message has been submitted.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MAP -->
+        <section class="map-wrapper fade-up">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14959.2411118624!2d78.0989895871582!3d20.390710899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd3e8addfe3db15%3A0x9180a3a869c83907!2sDr.%20Bhausaheb%20Nandurkar%20School!5e0!3m2!1sen!2sin!4v1763366128999!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Column 1: Logo + Trust Info -->
+        <div class="footer-col">
+          <img src="images/logo.png" alt="Hospital Logo" class="footer-logo" />
+          <h3>Satchikitsa Prasarak Mandal</h3>
+          <p><strong>Sri Satya Sai Sanjeevani Eye Hospital</strong></p>
+          <p>
+            Shri Satya Sai Vidya Nagari,<br />
+            Dr. Nandurkar Vidyalaya Campus,<br />
+            Yavatmal, Maharashtra - 445001.
+          </p>
+          <p class="footer-tagline">
+            Vision for All — Free Eye Care &amp; Social Service Initiative
+          </p>
+
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/"
+              class="fa-icon"
+              aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a
+              href="https://twitter.com/"
+              class="fa-icon"
+              aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              class="fa-icon"
+              aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/"
+              class="fa-icon"
+              aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.youtube.com/"
+              class="fa-icon"
+              aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <ul class="footer-list">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="about.html">Vision &amp; Mission</a></li>
+            <li><a href="about.html">Goals &amp; Objectives</a></li>
+            <li><a href="about.html">Leadership Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Resources</h4>
+          <ul class="footer-list">
+            <li><a href="news.html">News</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="gallery.html">Volunteering</a></li>
+            <li><a href="news.html">Donation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+          <h4>Our Work</h4>
+          <ul class="footer-list">
+            <li><a href="projectDone.html">Social Services</a></li>
+            <li><a href="projectDone.html">Religious Mass Marriages</a></li>
+            <li><a href="projectDone.html">Sports Achievements</a></li>
+            <li><a href="projectDone.html">Health Camps</a></li>
+            <li>
+              <a href="projectDone.html">Events &amp; Cultural Activities</a>
+            </li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Certificates</h4>
+          <ul class="footer-list">
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="expenses.html">Expenses</a></li>
+            <li><a href="recoginition.html">Recoginition</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact + Donors + Social -->
+        <div class="footer-col">
+          <h4>Contact Details</h4>
+          <p>
+            Email:<br />
+            <a href="mailto:prakashnandurkar9575@gmail.com"
+              >prakashnandurkar9575@gmail.com</a
+            ><br />
+            <a href="mailto:spmtrustytl@gmail.com">spmtrustytl@gmail.com</a>
+          </p>
+
+          <p>
+            Phone:<br />
+            <a href="tel:+919011503530">9011503530</a>,
+            <a href="tel:+919763448555">9763448555</a>
+          </p>
+
+          <p><strong>Secretary:</strong><br />Dr. Prakash Nandurkar</p>
+
+          <h4 style="margin-top: 18px">Major Donors</h4>
+          <ul class="footer-list">
+            <li>
+              <a href="https://www.nseindia.com/"
+                >National Stock Exchange, Mumbai</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.owenscorning.com/en-in/composites/showcases/india"
+                >Owens Corning India</a
+              >
+            </li>
+            <li><a href="https://ekam.ngo/">Ekam Foundation</a></li>
+            <li>
+              <a href="https://www.bv.com/">Black &amp; Veatch Pvt. Ltd.</a>
+            </li>
+          </ul>
+
+          <!-- Contact Us Button -->
+          <div class="footer-btn-container">
+            <a href="contactUs.html" class="footer-btn">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 SPM — Sri Satya Sai Sanjeevani Eye Hospital | Designed &amp;
+          Developed by <b>Guru Software Solutions</b> All Rights Reserved
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fade-up animation -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const fadeEls = document.querySelectorAll('.fade-up');
+
+        const observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        fadeEls.forEach(el => observer.observe(el));
+      });
+    </script>
+
+    <!-- Simple form validation -->
+    <script>
+      const contactForm = document.getElementById('contactForm');
+      const successMsg = document.getElementById('successMsg');
+
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const mobileInput = document.getElementById('mobile');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const mobileError = document.getElementById('mobileError');
+      const subjectError = document.getElementById('subjectError');
+      const messageError = document.getElementById('messageError');
+
+      function validateEmail(value) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(value);
+      }
+
+      function validateForm() {
+        let valid = true;
+
+        // Name
+        if (!nameInput.value.trim() || nameInput.value.trim().length < 3) {
+          nameError.classList.add('show-error');
+          valid = false;
+        } else {
+          nameError.classList.remove('show-error');
+        }
+
+        // Email
+        if (!validateEmail(emailInput.value.trim())) {
+          emailError.classList.add('show-error');
+          valid = false;
+        } else {
+          emailError.classList.remove('show-error');
+        }
+
+        // Mobile
+        const mobileVal = mobileInput.value.trim();
+        if (!/^[0-9]{10}$/.test(mobileVal)) {
+          mobileError.classList.add('show-error');
+          valid = false;
+        } else {
+          mobileError.classList.remove('show-error');
+        }
+
+        // Subject
+        if (!subjectInput.value.trim() || subjectInput.value.trim().length < 3) {
+          subjectError.classList.add('show-error');
+          valid = false;
+        } else {
+          subjectError.classList.remove('show-error');
+        }
+
+        // Message
+        if (!messageInput.value.trim() || messageInput.value.trim().length < 10) {
+          messageError.classList.add('show-error');
+          valid = false;
+        } else {
+          messageError.classList.remove('show-error');
+        }
+
+        return valid;
+      }
+
+      contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        contactForm.classList.add('was-validated');
+
+        if (!validateForm()) {
+          successMsg.style.display = 'none';
+          return;
+        }
+
+        // If valid – show success and reset
+        successMsg.style.display = 'block';
+        contactForm.reset();
+        contactForm.classList.remove('was-validated');
+      });
+    </script>
+  </body>
+</html>

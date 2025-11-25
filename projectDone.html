@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects & Programs | SPM Trust</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Global site styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #f6fbfb;
+        --card: #ffffff;
+        --primary: #0b6b71;
+        --accent: #ff7a18;
+        --muted: #55606a;
+        --glass: rgba(255, 255, 255, 0.65);
+        --radius: 14px;
+        --shadow: 0 10px 30px rgba(14, 22, 30, 0.08);
+        --container-width: 1100px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial;
+        background: linear-gradient(180deg, #f4fbfb 0%, #ffffff 100%);
+        color: #0e1b22;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
+        padding-top: 115px; /* space for fixed navbar */
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      /* ================= NAVBAR (Bootstrap-based, same style as your other page) ================= */
+      .navbar {
+        background: linear-gradient(to right, white, #c3aa31);
+        width: 100%;
+        padding: 0 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .navbar-brand img.logo {
+        width: 120px;
+        height: auto;
+        padding: 6px;
+        border-radius: 8px;
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 530;
+        font-size: 17px;
+        padding: 10px 16px;
+        color: #150404 !important;
+        transition: 0.3s ease;
+        border-radius: 6px;
+      }
+
+      .navbar-nav .nav-link:hover {
+        background: #d0b906;
+        color: #000 !important;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #d44570 !important;
+      }
+
+      .navbar-nav .dropdown-toggle::after {
+        margin-left: 5px;
+        vertical-align: 2px;
+      }
+
+      .navbar .dropdown-menu {
+        background: #c09919;
+        border-radius: 8px;
+        border: none;
+        padding: 0.3rem 0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .navbar .dropdown-item {
+        color: #1a0d0d;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: 0.3s ease;
+      }
+
+      .navbar .dropdown-item:hover {
+        background: #e5b70a;
+        color: #fff !important;
+      }
+
+      .btn-donate {
+        background: #0b6b71;
+        color: white !important;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+
+      .btn-donate:hover {
+        background: #064449;
+      }
+
+      .navbar-toggler {
+        border: none !important;
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      /* ================= MARQUEE ================= */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        background: #0b6b71;
+        padding: 8px 0;
+        position: relative;
+      }
+
+      .marquee-track {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scrollLoop 15s linear infinite;
+      }
+
+      .marquee-track span {
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+      }
+
+      @keyframes scrollLoop {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .marquee-track span {
+          font-size: 13px;
+        }
+      }
+
+      /* ================= PAGE WRAPPER ================= */
+      .wrap {
+        width: 92%;
+        max-width: var(--container-width);
+        margin: 26px auto 80px;
+        position: relative;
+      }
+
+      /* ================= HERO ================= */
+      .hero-project {
+        position: relative;
+        border-radius: 20px;
+        padding: 28px 24px;
+        background: radial-gradient(
+            circle at top left,
+            rgba(195, 170, 49, 0.32),
+            transparent 60%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(11, 107, 113, 0.32),
+            transparent 60%
+          ),
+          linear-gradient(145deg, #ffffff, #f3fbfb);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 22px;
+        align-items: center;
+      }
+
+      .hero-blur-circle {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(32px);
+        opacity: 0.7;
+        z-index: 0;
+      }
+
+      .hero-blur-circle.one {
+        width: 220px;
+        height: 220px;
+        background: rgba(195, 170, 49, 0.4);
+        top: -60px;
+        right: -40px;
+      }
+
+      .hero-blur-circle.two {
+        width: 260px;
+        height: 260px;
+        background: rgba(11, 107, 113, 0.35);
+        bottom: -100px;
+        left: -60px;
+      }
+
+      .hero-left {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        padding: 4px 12px;
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .hero-kicker i {
+        color: var(--primary);
+      }
+
+      .hero-left h1 {
+        font-family: Poppins, system-ui;
+        font-size: 1.8rem;
+        margin: 0 0 8px;
+        color: var(--primary);
+      }
+
+      .hero-left p.lead {
+        margin: 0 0 14px;
+        color: var(--muted);
+        max-width: 60ch;
+        font-size: 0.98rem;
+      }
+
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .hero-badge-pill {
+        font-size: 0.78rem;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--muted);
+        border: 1px solid rgba(11, 107, 113, 0.09);
+      }
+
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .primary-cta {
+        background: var(--primary);
+        color: #fff;
+        padding: 9px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 10px 22px rgba(11, 107, 113, 0.25);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          background 0.18s ease;
+      }
+
+      .primary-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 32px rgba(11, 107, 113, 0.35);
+        background: #064449;
+      }
+
+      .secondary-cta {
+        padding: 7px 14px;
+        border-radius: 999px;
+        border: 1px dashed rgba(11, 107, 113, 0.4);
+        color: var(--primary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero-right {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 10px;
+        box-shadow: 0 6px 18px rgba(12, 22, 32, 0.12);
+      }
+
+      .hero-card img {
+        width: 100%;
+        border-radius: 12px;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .hero-card small {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      /* ================= IMPACT COUNTERS ================= */
+      .impact-section {
+        margin-top: 28px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-family: Poppins, system-ui;
+        color: var(--primary);
+        font-size: 1.35rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-header h2 i {
+        color: var(--accent);
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .counter-card {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 14px 12px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      .counter-card .counter {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.5px;
+      }
+
+      .counter-label {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .counter-note {
+        font-size: 0.72rem;
+        color: #9aa3ad;
+        margin-top: 2px;
+      }
+
+      /* ================= GENERIC CONTENT LAYOUT ================= */
+      section.project-block {
+        margin-top: 28px;
+      }
+
+      .project-block-inner {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 18px 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .block-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .block-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: Poppins;
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin: 0;
+      }
+
+      .block-title i {
+        color: var(--accent);
+      }
+
+      .block-tagline {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .block-body {
+        font-size: 0.94rem;
+        color: var(--muted);
+      }
+
+      .block-body p {
+        margin-bottom: 10px;
+      }
+
+      .block-body ul {
+        padding-left: 18px;
+        margin-bottom: 10px;
+      }
+
+      .block-body li {
+        margin-bottom: 4px;
+      }
+
+      .block-footer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .block-meta {
+        font-size: 0.8rem;
+        color: #8a96a0;
+      }
+
+      .section-cta {
+        padding: 7px 16px;
+        border-radius: 999px;
+        background: #0b6b71;
+        color: #fff;
+        font-size: 0.86rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 8px 20px rgba(11, 107, 113, 0.25);
+        transition: 0.18s;
+      }
+
+      .section-cta i {
+        font-size: 0.85rem;
+      }
+
+      .section-cta:hover {
+        background: #064449;
+        transform: translateY(-1px);
+      }
+
+      /* ================= GALLERY ================= */
+      .gallery-section {
+        margin-top: 28px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .gallery-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(12, 22, 32, 0.12);
+        position: relative;
+      }
+
+      .gallery-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.25s ease;
+      }
+
+      .gallery-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .gallery-label {
+        position: absolute;
+        bottom: 6px;
+        left: 8px;
+        right: 8px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.55);
+        color: #fdfdfd;
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        text-align: center;
+      }
+
+      /* ================= FOOTER (copied from your style) ================= */
+      .footer {
+        background: #100e0d;
+        color: #ffffff;
+        margin-top: 40px;
+        padding: 45px 20px 20px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .footer-col h3,
+      .footer-col h4 {
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .footer-col p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .footer-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 12px;
+        border-radius: 10px;
+        background-color: #e1ddcf;
+        padding: 8px;
+      }
+
+      .footer-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .footer-list li {
+        margin-bottom: 6px;
+      }
+
+      .footer-list li a {
+        color: #d7ffff;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .footer-list li a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-col a[href^='mailto:'],
+      .footer-col a[href^='tel:'] {
+        color: #ffffff !important;
+        text-decoration: none;
+      }
+
+      .footer-col a[href^='mailto:']:hover,
+      .footer-col a[href^='tel:']:hover {
+        text-decoration: underline;
+      }
+
+      .footer-btn-container {
+        margin-top: 20px;
+      }
+
+      .footer-btn {
+        display: inline-block;
+        padding: 10px 18px;
+        background: #ffffff;
+        color: #0b6b71;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .footer-btn:hover {
+        background: #c1fffa;
+        color: #098658;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 35px;
+        padding-top: 12px;
+      }
+
+      .footer-bottom p {
+        font-size: 13px;
+        color: #e5fcfb;
+        margin: 0;
+      }
+
+      .social-links {
+        margin-top: 20px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .fa-icon {
+        width: 40px;
+        height: 40px;
+        background: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #0b6b71;
+        font-size: 18px;
+        text-decoration: none;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .fa-icon:hover {
+        background: #c1fff7;
+        transform: translateY(-4px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      }
+
+      .fa-icon:hover i {
+        color: #084b50;
+      }
+
+      @media (max-width: 992px) {
+        .impact-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding-top: 90px;
+        }
+
+        .hero-project {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        .impact-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .gallery-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR (Bootstrap) -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" alt="Sri Satya Sai logo" class="logo" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3 gap-2"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="resourcesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
+                <li><a class="dropdown-item" href="goals.html">News</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="supportDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Support Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+                <li>
+                  <a class="dropdown-item" href="partnerships.html"
+                    >Partnerships</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="vision.html">Volunteering</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="goals.html">Donations</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="recoginition.html">Recognitions</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                id="workDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Our Work
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                <li>
+                  <a class="dropdown-item" href="projectDone.html"
+                    >Activities</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="expenses.html">Expenses</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="achievements.html">Achievements</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contactUs.html">Contact Us</a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+              <a href="goals.html" class="btn btn-donate">❤️ DONATE</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <span>
+          Welcome to Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye
+          Hospital • Vision for All — Free Eye Care Initiative • Welcome to
+          Satchikitsa Prasarak Mandal — Sri Satya Sai Sanjeevani Eye Hospital •
+          Vision for All — Free Eye Care Initiative •
+        </span>
+      </div>
+    </div>
+
+    <!-- MAIN WRAP -->
+    <div class="wrap">
+      <!-- HERO -->
+      <section class="hero-project">
+        <div class="hero-blur-circle one"></div>
+        <div class="hero-blur-circle two"></div>
+
+        <div class="hero-left">
+          <div class="hero-kicker">
+            <i class="fa-solid fa-hands-holding-heart"></i>
+            SPM Trust • Health, Education & Social Welfare
+          </div>
+          <h1>Projects Implemented / Completed by SPM Trust</h1>
+          <p class="lead">
+            From Covid hospital support to eye care, Narayan Seva, maternal &
+            child health, education, sports and disaster relief — SPM Trust has
+            consistently served communities across Yavatmal and beyond.
+          </p>
+
+          <div class="hero-badges">
+            <span class="hero-badge-pill">
+              <i class="fa-solid fa-hospital"></i> Healthcare Programs
+            </span>
+            <span class="hero-badge-pill">
+              <i class="fa-solid fa-graduation-cap"></i> Education & Sports
+            </span>
+            <span class="hero-badge-pill">
+              <i class="fa-solid fa-hand-holding-heart"></i> Social Service
+            </span>
+          </div>
+
+          <div class="hero-ctas">
+            <a href="goals.html" class="primary-cta">
+              Donate Now
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#covid" class="secondary-cta">
+              View Key Projects
+              <i class="fa-solid fa-circle-down"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <img
+              src="images/project-hero.jpg"
+              alt="SPM Trust community programs"
+              onerror="this.src='https://images.unsplash.com/photo-1584466977773-e625c37cdd50?auto=format&fit=crop&w=900&q=80';"
+            />
+            <small>
+              SPM Trust serves through hospitals, camps, mass marriages, sports,
+              schools and relief activities.
+            </small>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPACT COUNTERS -->
+      <section class="impact-section">
+        <div class="section-header">
+          <h2>
+            <i class="fa-solid fa-chart-line"></i>
+            Impact Snapshot
+          </h2>
+          <p>
+            Live counters showing the scale of SPM Trust's long-term
+            interventions.
+          </p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="counter-card">
+            <span class="counter" data-target="700000">0</span>
+            <div class="counter-label">Meals served in Narayan Seva</div>
+            <div class="counter-note">Since 1995</div>
+          </div>
+          <div class="counter-card">
+            <span class="counter" data-target="100000">0</span>
+            <div class="counter-label">Children screened for heart issues</div>
+            <div class="counter-note">Across multiple camps</div>
+          </div>
+          <div class="counter-card">
+            <span class="counter" data-target="3000">0</span>
+            <div class="counter-label">Eye surgeries supported</div>
+            <div class="counter-note">Cataract & other procedures</div>
+          </div>
+          <div class="counter-card">
+            <span class="counter" data-target="2000">0</span>
+            <div class="counter-label">Mass marriages conducted</div>
+            <div class="counter-note">All religions, all communities</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section class="gallery-section">
+        <div class="section-header">
+          <h2>
+            <i class="fa-solid fa-images"></i>
+            Project Glimpses
+          </h2>
+          <p>Visual highlights from key programs and on-ground activities.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-card">
+            <img
+              src="images/gallery-covid.jpg"
+              alt="Covid hospital support"
+              onerror="this.src='https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=800&q=80';"
+            />
+            <div class="gallery-label">Sai Dhanwantri Covid Hospital, Yavatmal</div>
+          </div>
+
+          <div class="gallery-card">
+            <img
+              src="images/gallery-narayan.jpg"
+              alt="Narayan Seva"
+              onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80';"
+            />
+            <div class="gallery-label">Sri Satya Sai Narayan Seva — Free Meals</div>
+          </div>
+
+          <div class="gallery-card">
+            <img
+              src="images/gallery-eye-camp.jpg"
+              alt="Eye camp"
+              onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';"
+            />
+            <div class="gallery-label">Eye Check-up & Cataract Surgery Camps</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1) COVID RESPONSE -->
+      <section id="covid" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-virus-covid"></i>
+              1) Sai Dhanwantri Hospital — Covid Response
+            </h3>
+            <p class="block-tagline">
+              Rapid, large-scale intervention during the pandemic.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              In a challenging situation of Covid-19, SPM Trust took initiative
+              to meet the crisis head-on. A building of
+              <strong>30,000 sq.ft.</strong> was dedicated to start a
+              full-fledged Sai Dhanwantri Covid Hospital in Yavatmal.
+            </p>
+            <p>
+              The trust procured an oxygen concentrator plant on loan of
+              <strong>₹80 lakh</strong> and made available
+              <strong>150 beds with oxygen</strong> out of a
+              <strong>250-bed facility</strong> — saving hundreds of lives.
+              Services were offered at minimum fees as per Government
+              guidelines.
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta"
+              >Facility: 250 beds • 150 oxygen beds • ₹80L oxygen plant</span
+            >
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-heart"></i>
+              Donate for Healthcare
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2) NARAYAN SEVA -->
+      <section id="narayan" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-bowl-rice"></i>
+              2) Sri Satya Sai Narayan Seva — Feed the Hungry (Since 1995)
+            </h3>
+            <p class="block-tagline">
+              Sustained free meal service for caretakers & the needy.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              Providing free meals to needy patients' relatives and caretakers
+              at Government Medical College, Yavatmal. The program began on
+              <strong>1st November 1995</strong> and runs continuously, having
+              served more than <strong>7,00,000 people</strong>.
+            </p>
+            <p>
+              Caretakers often lose daily wages to stand beside their loved
+              ones. Narayan Seva ensures they receive dignified, wholesome food
+              during this period, reflecting the trust’s deep social commitment.
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Over 7 lakh free meals served</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-utensils"></i>
+              Sponsor Meals
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) EYE CAMPS & SURGERIES -->
+      <section id="cataract" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-eye"></i>
+              3) Eye Check-up & Surgery Camps
+            </h3>
+            <p class="block-tagline">
+              Thousands of cataract patients served in rural areas.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <ul>
+              <li>
+                <strong>Rural Eye Camps:</strong> Health check-up camps
+                organized across multiple villages, providing free eye
+                examinations and spectacles.
+              </li>
+              <li>
+                <strong>Surgery Assistance:</strong> Cataract and other eye
+                surgeries supported at Yavatmal & Nagpur hospitals — with over
+                <strong>3,000</strong> patients benefited.
+              </li>
+              <li>
+                <strong>Impact:</strong> Reduced avoidable blindness among
+                senior citizens and economically weaker sections.
+              </li>
+            </ul>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Free camps • Spectacles • Surgeries</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-eye-low-vision"></i>
+              Support Eye Care
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) MOTHER & CHILD CARE -->
+      <section id="mother" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-baby-carriage"></i>
+              4) Mother & Child Care
+            </h3>
+            <p class="block-tagline">
+              Free maternal & child health services for rural communities.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              The Trust established Sri Satya Sai Sanjeevani Mother & Child
+              Hospital in Yavatmal to secure healthy motherhood and childhood.
+            </p>
+            <p>
+              Regular services provided free of cost include maternal care,
+              antenatal care, ultrasonography, lab investigations, fetal
+              echocardiography, normal & C-section deliveries, medicines,
+              nutritional supplements and counselling.
+            </p>
+            <ul>
+              <li>Regular camps in 3 Primary Health Centers & 1 Rural Hospital</li>
+              <li>Free medicines & protein supplements (Sai Sure)</li>
+              <li>Over <strong>5,000</strong> women supported since 2017</li>
+            </ul>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Mother & child care • Nutrition • Camps</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-heart-pulse"></i>
+              Support Mothers & Children
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) HEART SCREENING -->
+      <section id="heart" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-stethoscope"></i>
+              5) Heart Screening & Diagnostic Camps
+            </h3>
+            <p class="block-tagline">
+              Large-scale pediatric screenings and life-saving referrals.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              Regular heart screening camps were organized for needy children.
+              Counselling and travel arrangements were provided wherever needed.
+            </p>
+            <p>
+              Over <strong>1,00,000</strong> children were screened, and around
+              <strong>90</strong> critical cases were diagnosed and referred for
+              free corrective surgery.
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Screenings • Diagnosis • Free surgeries</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-notes-medical"></i>
+              Help Save a Child
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) CHARITABLE DISPENSARY -->
+      <section id="dispensary" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-mortar-pestle"></i>
+              6) Charitable Homeopathic Dispensary (Since 1958)
+            </h3>
+            <p class="block-tagline">
+              Low-cost, long-term care for chronic conditions.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              A charitable homeopathic dispensary has been functioning for over
+              65 years, serving more than <strong>3,50,000</strong> patients
+              with continued care and follow-up.
+            </p>
+            <p>
+              Common ailments treated include asthma, eczema, gastric disorders,
+              rheumatic arthritis and chronic skin diseases — providing much
+              needed relief to economically weaker sections.
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Since 1958 • 3.5 lakh+ patients</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-pills"></i>
+              Support Dispensary
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7) MASS MARRIAGES -->
+      <section id="marriage" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-people-roof"></i>
+              7) Sri Satya Sai All Religions Mass Marriage (Since 1994)
+            </h3>
+            <p class="block-tagline">
+              Removing financial burden — celebrating unity & dignity.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              To reduce the heavy financial burden of marriage on poor families,
+              the Trust conducts multi-religion mass marriages. The program
+              covers:
+            </p>
+            <ul>
+              <li>Marriage registration and legal documentation</li>
+              <li>Clothing, mangalsutra and household utensils</li>
+              <li>Meal arrangements for relatives and invitees</li>
+            </ul>
+            <p>
+              Over <strong>2,000</strong> marriages have been supported and the
+              concept has inspired similar initiatives across Maharashtra, with
+              government incentives added later.
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">All religions • 2,000+ marriages</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-ring"></i>
+              Sponsor a Marriage
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8) SPORTS -->
+      <section id="sports" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-futbol"></i>
+              8) Sports: Building Youth & Champions
+            </h3>
+            <p class="block-tagline">
+              State, national & international achievements.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <ul>
+              <li>
+                <strong>Grassroots Clubs:</strong> Sports clubs and district
+                associations created to encourage youth participation, with over
+                <strong>600</strong> players competing at state level.
+              </li>
+              <li>
+                <strong>National Recognition:</strong> Around
+                <strong>150</strong> players selected for higher-level sports
+                camps and events; <strong>11</strong> players received state
+                awards.
+              </li>
+              <li>
+                <strong>International Exposure:</strong> Players participated in
+                international street football tournaments in countries like
+                Germany and Australia.
+              </li>
+            </ul>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Clubs • Camps • Awards • Tours</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-medal"></i>
+              Support Young Athletes
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9) EDUCATION -->
+      <section id="education" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-school"></i>
+              9) Education & Schools
+            </h3>
+            <p class="block-tagline">
+              Three schools — cultural, academic & holistic growth.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              The Trust runs three schools from primary classes to board exams.
+              Emphasis is laid on:
+            </p>
+            <ul>
+              <li>Cultural and value-based grooming</li>
+              <li>Academic excellence and competitive preparation</li>
+              <li>Sports and co-curricular development</li>
+            </ul>
+            <p>
+              Admissions are inclusive — irrespective of caste, creed or
+              economic background. Education is viewed as a tool for
+              transformation: “When one educates many, one can change the
+              world.”
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">3 schools • holistic development</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-graduation-cap"></i>
+              Support Education
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10) RELIEF & ENVIRONMENT -->
+      <section id="relief" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-people-carry-box"></i>
+              10) Disaster Relief & Environment
+            </h3>
+            <p class="block-tagline">
+              Relief operations and long-term environmental action.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <ul>
+              <li>
+                <strong>National Calamity Response:</strong> Teams mobilized to
+                Gujarat (Bhuj earthquake), Orissa cyclone, Nagapattnam tsunami
+                and other disaster sites — recognized by local administration.
+              </li>
+              <li>
+                <strong>Local Flood Relief:</strong> During Kolhapur, Sangli and
+                Yavatmal floods, students and volunteers collected and
+                distributed essential items.
+              </li>
+              <li>
+                <strong>Environment Drives:</strong> Tree plantation (one student
+                one tree), plastic elimination campaigns, sapling distribution
+                and cleanliness drives.
+              </li>
+            </ul>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Relief kits • Trees • Clean environment</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-seedling"></i>
+              Support Relief & Green Drives
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT / INVOLVEMENT -->
+      <section id="contact" class="project-block">
+        <div class="project-block-inner">
+          <div class="block-header">
+            <h3 class="block-title">
+              <i class="fa-solid fa-hands-holding-circle"></i>
+              Get Involved / Contact
+            </h3>
+            <p class="block-tagline">
+              Support programs, volunteer, or partner through CSR.
+            </p>
+          </div>
+
+          <div class="block-body">
+            <p>
+              To support or partner with SPM Trust, you can reach out for
+              volunteering, donations, or institutional partnerships. Your
+              contribution strengthens healthcare, education, sports, and social
+              welfare in the region.
+            </p>
+            <ul>
+              <li>CSR partnerships for health & eye-care projects</li>
+              <li>Support for Narayan Seva & Mother-Child programs</li>
+              <li>Scholarships & sports sponsorships for youth</li>
+            </ul>
+            <p class="block-meta">
+              Email: <strong>spmtrustytl@gmail.com</strong> • Phone:
+              <strong>+91 9763448555 / 9011503530</strong>
+            </p>
+          </div>
+
+          <div class="block-footer">
+            <span class="block-meta">Every contribution creates real impact.</span>
+            <a href="goals.html" class="section-cta">
+              <i class="fa-solid fa-heart-circle-plus"></i>
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Column 1: Logo + Trust Info -->
+        <div class="footer-col">
+          <img src="images/logo.png" alt="Hospital Logo" class="footer-logo" />
+          <h3>Satchikitsa Prasarak Mandal</h3>
+          <p><strong>Sri Satya Sai Sanjeevani Eye Hospital</strong></p>
+          <p>
+            Shri Satya Sai Vidya Nagari,<br />
+            Dr. Nandurkar Vidyalaya Campus,<br />
+            Yavatmal, Maharashtra - 445001.
+          </p>
+          <p class="footer-tagline">
+            Vision for All — Free Eye Care & Social Service Initiative
+          </p>
+
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/"
+              class="fa-icon"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://twitter.com/" class="fa-icon" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              class="fa-icon"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/"
+              class="fa-icon"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.youtube.com/"
+              class="fa-icon"
+              aria-label="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <ul class="footer-list">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="about.html">Vision & Mission</a></li>
+            <li><a href="about.html">Goals & Objectives</a></li>
+            <li><a href="about.html">Leadership Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Resources</h4>
+          <ul class="footer-list">
+            <li><a href="news.html">News</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="gallery.html">Volunteering</a></li>
+            <li><a href="news.html">Donation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+          <h4>Our Work</h4>
+          <ul class="footer-list">
+            <li><a href="projectDone.html">Social Services</a></li>
+            <li><a href="projectDone.html">Religious Mass Marriages</a></li>
+            <li><a href="projectDone.html">Sports Achievements</a></li>
+            <li><a href="projectDone.html">Health Camps</a></li>
+            <li>
+              <a href="projectDone.html">Events & Cultural Activities</a>
+            </li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Certificates</h4>
+          <ul class="footer-list">
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="expenses.html">Expenses</a></li>
+            <li><a href="recoginition.html">Recoginition</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact + Donors + Social -->
+        <div class="footer-col">
+          <h4>Contact Details</h4>
+          <p>
+            Email:<br />
+            <a href="mailto:prakashnandurkar9575@gmail.com"
+              >prakashnandurkar9575@gmail.com</a
+            ><br />
+            <a href="mailto:spmtrustytl@gmail.com">spmtrustytl@gmail.com</a>
+          </p>
+
+          <p>
+            Phone:<br />
+            <a href="tel:+919011503530">9011503530</a>,
+            <a href="tel:+919763448555">9763448555</a>
+          </p>
+
+          <p><strong>Secretary:</strong><br />Dr. Prakash Nandurkar</p>
+
+          <h4 style="margin-top: 18px">Major Donors</h4>
+          <ul class="footer-list">
+            <li>
+              <a href="https://www.nseindia.com/"
+                >National Stock Exchange, Mumbai</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.owenscorning.com/en-in/composites/showcases/india"
+                >Owens Corning India</a
+              >
+            </li>
+            <li><a href="https://ekam.ngo/">Ekam Foundation</a></li>
+            <li>
+              <a href="https://www.bv.com/">Black & Veatch Pvt. Ltd.</a>
+            </li>
+          </ul>
+
+          <div class="footer-btn-container">
+            <a href="contactUs.html" class="footer-btn">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 SPM — Sri Satya Sai Sanjeevani Eye Hospital | Designed &
+          Developed by <b>Guru Software Solutions</b> All Rights Reserved
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Live Counter Script -->
+    <script>
+      const counters = document.querySelectorAll('.counter');
+      const counterOptions = { threshold: 0.4 };
+
+      function animateCounter(counter) {
+        const target = parseInt(counter.getAttribute('data-target'), 10);
+        const duration = 2800;
+        const startTime = performance.now();
+
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const current = Math.floor(progress * target);
+          counter.textContent =
+            target > 1000 ? current.toLocaleString('en-IN') : current;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent =
+              target > 1000 ? target.toLocaleString('en-IN') : target;
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, counterOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+      } else {
+        counters.forEach(counter => animateCounter(counter));
+      }
+    </script>
+  </body>
+</html>
