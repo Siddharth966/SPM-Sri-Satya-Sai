@@ -125,7 +125,7 @@
         color: white !important;
         padding: 8px 20px;
         border-radius: 25px;
-        font-weight: 600;
+        font-weight: 400;
         transition: 0.3s ease;
       }
 
@@ -158,7 +158,7 @@
       }
 
       .marquee-track span {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 600;
         color: white;
       }
@@ -172,11 +172,35 @@
         }
       }
 
+       /* Marquee Fix for Mobile Screens */
       @media (max-width: 600px) {
+        /* Adjust marquee text */
         .marquee-track span {
           font-size: 13px;
         }
+
+        /* The navbar becomes taller on mobile (~150px) */
+        body {
+          padding-top: 115px !important;
+        }
+
+        .marquee-container {
+          padding: 5px 0;
+        }
       }
+
+      @media (max-width: 425px) {
+        body {
+          padding-top: 115px !important; /* adjust for smaller screens */
+        }
+      }
+
+      @media (max-width: 375px) {
+        body {
+          padding-top: 115px !important; /* iPhone SE, small devices */
+        }
+      }
+
 
       /* ================= PAGE WRAPPER ================= */
       .wrap {
@@ -754,7 +778,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -831,7 +855,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contactUs.html">Contact Us</a>
+              <a class="nav-link" href="contactUs.html">Contact</a>
             </li>
 
             <li class="nav-item ms-lg-3">

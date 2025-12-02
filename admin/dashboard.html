@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+
+  <!-- CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      font-family: Poppins, sans-serif;
+      background: #a5b080;
+      margin: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: #0e67eb;
+      color: white;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+    }
+
+    .sidebar h3 {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .nav-item {
+      padding: 12px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: #084bbf;
+      transform: translateX(5px);
+    }
+
+    .nav-item.logout {
+      margin-top: auto;
+      background: #ff4a4a;
+    }
+
+    .nav-item.logout:hover {
+      background: #d63030;
+      transform: translateX(5px);
+    }
+
+    /* Content Area */
+    .content {
+      margin-left: 270px;
+      padding: 30px;
+      width: calc(100% - 270px);
+    }
+
+    .card-box {
+      background: rgb(234, 233, 231);
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+    }
+
+    .card-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .stat-number {
+      font-size: 36px;
+      margin: 12px 0;
+      font-weight: 700;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeUp 0.5s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <h3>Admin Panel</h3>
+
+    <div class="nav-item active" onclick="navigate('dashboard.html')">
+      <i class="fa-solid fa-house"></i> Home
+    </div>
+
+    <div class="nav-item" onclick="navigate('gallery_admin.html')">
+      <i class="fa-solid fa-images"></i> Gallery
+    </div>
+
+    <div class="nav-item" onclick="navigate('messages.html')">
+      <i class="fa-solid fa-envelope"></i> Messages
+    </div>
+
+    <div class="nav-item logout" onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <section class="content fade-up">
+    <h2 class="fw-bold">Welcome 👋 Admin Dashboard</h2>
+    <p class="text-muted">Manage your system using tools on the left.</p>
+
+    <div class="row mt-4">
+
+      <div class="col-md-4 mb-3">
+        <div class="card-box">
+          <i class="fa-solid fa-images fa-2x text-primary"></i>
+          <p class="stat-number" id="galleryCount">0</p>
+          <span class="text-secondary">Total Gallery Images</span>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="card-box">
+          <i class="fa-solid fa-envelope fa-2x text-success"></i>
+          <p class="stat-number" id="messageCount">0</p>
+          <span class="text-secondary"> Total Contact Messages</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    const token = localStorage.getItem("admin_token");
+    if (!token) window.location.href = "login.html";
+
+    // Load Stats
+    async function loadStats() {
+      try {
+        const messagesRes = await fetch("http://localhost:5000/api/contact", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const messages = await messagesRes.json();
+        document.getElementById("messageCount").innerText = messages.data.length;
+
+        const galleryRes = await fetch("http://localhost:5000/api/gallery", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const gallery = await galleryRes.json();
+        document.getElementById("galleryCount").innerText = gallery.data.length;
+
+      } catch (error) {
+        console.log("Error fetching stats:", error);
+      }
+    }
+
+    loadStats();
+
+    // Navigation Function
+    function navigate(page) {
+      window.location.href = page;
+    }
+
+    // Logout Function
+    function logout() {
+      localStorage.removeItem("admin_token");
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

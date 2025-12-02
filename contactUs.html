@@ -112,7 +112,7 @@
         color: white !important;
         padding: 8px 20px;
         border-radius: 25px;
-        font-weight: 600;
+        font-weight: 400;
         transition: 0.3s ease;
       }
 
@@ -149,7 +149,7 @@
         width: 100%;
         overflow: hidden;
         background: var(--primary-color);
-        padding: 8px 0;
+        padding: 6px 0;
         position: relative;
       }
 
@@ -160,7 +160,7 @@
       }
 
       .marquee-track span {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 600;
         color: white;
       }
@@ -174,14 +174,35 @@
         }
       }
 
+     /* Marquee Fix for Mobile Screens */
       @media (max-width: 600px) {
+        /* Adjust marquee text */
         .marquee-track span {
           font-size: 13px;
         }
+
+        /* The navbar becomes taller on mobile (~150px) */
+        body {
+          padding-top: 115px !important;
+        }
+
         .marquee-container {
           padding: 5px 0;
         }
       }
+
+      @media (max-width: 425px) {
+        body {
+          padding-top: 115px !important; /* adjust for smaller screens */
+        }
+      }
+
+      @media (max-width: 375px) {
+        body {
+          padding-top: 115px !important; /* iPhone SE, small devices */
+        }
+      }
+
 
       /* ============== PAGE HEADER ============== */
       .page-header-wrapper {
@@ -527,7 +548,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -605,7 +626,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="contactUs.html">Contact Us</a>
+              <a class="nav-link active" href="contactUs.html">Contact</a>
             </li>
 
             <li class="nav-item ms-lg-3">
@@ -993,87 +1014,47 @@
 
     <!-- Simple form validation -->
     <script>
-      const contactForm = document.getElementById('contactForm');
-      const successMsg = document.getElementById('successMsg');
+  const formElement = document.getElementById("contactForm");
+  const successMsgBox = document.getElementById("successMsg");
 
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const mobileInput = document.getElementById('mobile');
-      const subjectInput = document.getElementById('subject');
-      const messageInput = document.getElementById('message');
+  formElement.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-      const nameError = document.getElementById('nameError');
-      const emailError = document.getElementById('emailError');
-      const mobileError = document.getElementById('mobileError');
-      const subjectError = document.getElementById('subjectError');
-      const messageError = document.getElementById('messageError');
+    const formPayload = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      mobile: document.getElementById("mobile").value.trim(),
+      subject: document.getElementById("subject").value.trim(),
+      message: document.getElementById("message").value.trim(),
+    };
 
-      function validateEmail(value) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(value);
-      }
-
-      function validateForm() {
-        let valid = true;
-
-        // Name
-        if (!nameInput.value.trim() || nameInput.value.trim().length < 3) {
-          nameError.classList.add('show-error');
-          valid = false;
-        } else {
-          nameError.classList.remove('show-error');
-        }
-
-        // Email
-        if (!validateEmail(emailInput.value.trim())) {
-          emailError.classList.add('show-error');
-          valid = false;
-        } else {
-          emailError.classList.remove('show-error');
-        }
-
-        // Mobile
-        const mobileVal = mobileInput.value.trim();
-        if (!/^[0-9]{10}$/.test(mobileVal)) {
-          mobileError.classList.add('show-error');
-          valid = false;
-        } else {
-          mobileError.classList.remove('show-error');
-        }
-
-        // Subject
-        if (!subjectInput.value.trim() || subjectInput.value.trim().length < 3) {
-          subjectError.classList.add('show-error');
-          valid = false;
-        } else {
-          subjectError.classList.remove('show-error');
-        }
-
-        // Message
-        if (!messageInput.value.trim() || messageInput.value.trim().length < 10) {
-          messageError.classList.add('show-error');
-          valid = false;
-        } else {
-          messageError.classList.remove('show-error');
-        }
-
-        return valid;
-      }
-
-      contactForm.addEventListener('submit', e => {
-        e.preventDefault();
-        contactForm.classList.add('was-validated');
-
-        if (!validateForm()) {
-          successMsg.style.display = 'none';
-          return;
-        }
-
-        // If valid – show success and reset
-        successMsg.style.display = 'block';
-        contactForm.reset();
-        contactForm.classList.remove('was-validated');
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formPayload),
       });
-    </script>
+
+      const result = await response.json();
+      console.log("SERVER:", result);
+
+      if (response.ok) {
+        successMsgBox.style.display = "block";
+        successMsgBox.innerText = "✅ Message submitted successfully!";
+
+        formElement.reset();
+
+        setTimeout(() => {
+          successMsgBox.style.display = "none";
+        }, 3500);
+      } else {
+        alert("⚠ " + result.message);
+      }
+    } catch (err) {
+      alert("❌ Something went wrong: " + err.message);
+    }
+  });
+</script>
+
   </body>
 </html>

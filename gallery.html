@@ -17,7 +17,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (optional but matches other pages) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -32,7 +32,7 @@
         --primary-color: #0b6b71;
         --primary-dark: #064449;
         --accent-gold: #c3aa31;
-        --light-bg: #f7f9fb;
+        --light-bg: #eef7f7;
         --text-color: #222;
       }
 
@@ -42,13 +42,20 @@
         background: var(--light-bg);
         color: var(--text-color);
         padding-top: 115px;
+        /* space for fixed navbar */
       }
 
-      /* ================= NAVBAR ================= */
+      a {
+        text-decoration: none;
+      }
+
+      /* ================= NAVBAR (Bootstrap) ================= */
       .navbar {
-        background: linear-gradient(to right, white, var(--accent-gold));
+        background: linear-gradient(to right, white, #c3aa31);
+        width: 100%;
         padding: 0 !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
       }
 
       .navbar-brand img.logo {
@@ -71,22 +78,24 @@
         background: #d0b906;
         color: #000 !important;
       }
-      /* Dropdown toggle caret */
+
+      .navbar-nav .nav-link.active {
+        color: #d44570 !important;
+      }
+
       .navbar-nav .dropdown-toggle::after {
         margin-left: 5px;
         vertical-align: 2px;
       }
 
-      /* Dropdown Menu */
       .navbar .dropdown-menu {
-        background: #c09919; /* from original */
-        border-radius: 8px; /* from original */
+        background: #c09919;
+        border-radius: 8px;
         border: none;
         padding: 0.3rem 0;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
       }
 
-      /* Dropdown Items */
       .navbar .dropdown-item {
         color: #1a0d0d;
         padding: 10px 16px;
@@ -95,30 +104,50 @@
         transition: 0.3s ease;
       }
 
-      /* Dropdown Hover */
       .navbar .dropdown-item:hover {
         background: #e5b70a;
         color: #fff !important;
       }
 
       .btn-donate {
-        background: var(--primary-color);
+        background: #0b6b71;
         color: white !important;
         padding: 8px 20px;
         border-radius: 25px;
-        font-weight: 600;
+        font-weight: 400;
+        transition: 0.3s ease;
       }
 
       .btn-donate:hover {
-        background: var(--primary-dark);
+        background: #064449;
       }
 
+      .navbar-toggler {
+        border: none !important;
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .navbar-nav {
+        gap: 0.15rem;
+      }
+
+      /* show toggler icon correctly */
       .navbar-light .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,0.7)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      @media (max-width: 576px) {
+        body {
+          padding-top: 140px;
+          /* taller navbar in mobile */
+        }
       }
 
       /* ================= MARQUEE ================= */
-      /* MARQUEE */
       .marquee-container {
         width: 100%;
         overflow: hidden;
@@ -143,21 +172,15 @@
         0% {
           transform: translateX(0);
         }
+
         100% {
           transform: translateX(-50%);
         }
       }
 
-      /* Marquee Fix for Mobile Screens */
       @media (max-width: 600px) {
-        /* Adjust marquee text */
         .marquee-track span {
           font-size: 13px;
-        }
-
-        /* The navbar becomes taller on mobile (~150px) */
-        body {
-          padding-top: 115px !important;
         }
 
         .marquee-container {
@@ -165,109 +188,37 @@
         }
       }
 
-      @media (max-width: 425px) {
-        body {
-          padding-top: 115px !important; /* adjust for smaller screens */
-        }
+      /* ============== PAGE HEADER ============== */
+      .page-header-wrapper {
+        padding: 2.5rem 0 2rem;
       }
 
-      @media (max-width: 375px) {
-        body {
-          padding-top: 115px !important; /* iPhone SE, small devices */
-        }
-      }
-
-      /* ================= HEADINGS ================= */
-      h1 {
-        text-align: center;
-        font-size: 32px;
-        color: var(--primary-color);
+      .page-title {
+        font-size: 2rem;
         font-weight: 700;
-      }
-
-      .section-title {
-        font-size: 22px;
         color: var(--primary-color);
-        margin: 30px 0 15px;
-        border-left: 6px solid var(--primary-color);
-        padding-left: 10px;
-        font-weight: 600;
       }
 
-      /* ================= GALLERY GRID ================= */
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
+      .page-subtitle {
+        color: #555;
+        font-size: 0.98rem;
+        max-width: 720px;
+        margin: 0.25rem auto 0;
       }
 
-      .gallery-card {
-        background: white;
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        transition: 0.3s ease;
-      }
-
-      .gallery-card:hover {
-        transform: translateY(-7px);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
-      }
-
-      .gallery-card img {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-        transition: 0.4s;
-      }
-
-      .gallery-card:hover img {
-        transform: scale(1.07);
-      }
-
-      .desc {
-        padding: 14px;
-        color: #444;
-        font-size: 14px;
-      }
-
-      @media (max-width: 1000px) {
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .gallery-card img {
-          height: 200px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        body {
-          padding-top: 130px;
-        }
-
-        .gallery-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .gallery-card img {
-          height: 170px;
-        }
-      }
-
-      /* ================= FOOTER ================= */
+      /* ================== FOOTER (same style as index) ================== */
       .footer {
         background: #02181a;
         color: #f3f3f3;
         padding-top: 3rem;
-        margin-top: 2rem;
+        margin-top: 3rem;
       }
 
       .footer-container {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 2rem;
-        max-width: 1200px;
+
         margin: 0 auto;
         padding: 0 1.5rem 2rem;
       }
@@ -283,13 +234,12 @@
       .footer-col a {
         font-size: 0.9rem;
         color: #d0d0d0;
-        text-decoration: none;
       }
 
       .footer-col a:hover {
         color: #ffffff;
-        text-decoration: none;
       }
+      
 
       .footer-logo {
         width: 80px;
@@ -311,7 +261,7 @@
       .footer-list li {
         margin-bottom: 0.4rem;
       }
-
+   
       .social-links {
         display: flex;
         gap: 0.5rem;
@@ -368,85 +318,177 @@
         color: #cfd3d4;
       }
 
-      /* HIDDEN ADMIN ICON */
-      #adminHiddenIcon {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.05);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        z-index: 9999;
-      }
-
-      /* RESPONSIVE */
       @media (max-width: 992px) {
         .footer-container {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+           text-align: left;
         }
       }
 
       @media (max-width: 768px) {
-        .hero-section {
-          padding-top: 2.5rem;
-        }
-
         .footer-container {
           grid-template-columns: 1fr;
-        }
-
-        .hero-title {
-          font-size: 1.6rem;
+           text-align: left;
         }
       }
 
       @media (max-width: 576px) {
         body {
-          padding-top: 72px;
+          padding-top: 120px;
+           text-align: left;
         }
+      }
 
-        .hero-carousel .carousel-item img {
-          height: 60vh;
+      /* Clean background */
+      body {
+        background: #f5f7fa;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* Masonry Layout */
+      #galleryContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+        padding-bottom: 50px;
+      }
+
+      @media (max-width: 992px) {
+        #galleryContainer {
+          column-count: 2;
+        }
+      }
+
+      @media (max-width: 576px) {
+        #galleryContainer {
+          column-count: 1;
+        }
+      }
+
+      /* Responsive Grid */
+    #galleryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* keeps layout centered if only 1 item */
+}
+
+
+      /* Card */
+     .gallery-card {
+  width: 380px;  /* FIXED consistent card width */
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.28s ease;
+  cursor: pointer;
+}
+
+
+      .gallery-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .gallery-card:hover .gallery-image {
+  transform: scale(1.08);
+}
+
+      /* Image */
+      .gallery-image {
+        width: 400px;
+        height: 360px; /* FIXED CARD HEIGHT */
+        object-fit:cover; /* keeps full image */
+        background: #e9ecef; /* fills empty space cleanly */
+        padding: 5px;
+        transition: transform 0.45s ease-in-out; /* Smooth zoom-in & zoom-out */
+
+      }
+      /* Text Section */
+      .gallery-info {
+        text-align: center;
+        padding: 10px 12px;
+        transition: color 0.3s ease;
+      }
+
+      .gallery-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 4px 0;
+      }
+
+      .gallery-tag {
+        background: #119953;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 16px;
+        font-size: 11px;
+        display: inline-block;
+        margin-top: 4px;
+      }
+
+      /* Fade animation */
+      .fade-item {
+        opacity: 0;
+        animation: fadeUp 0.4s forwards;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
     </style>
   </head>
 
   <body>
-    <!-- ================= NAVBAR ================= -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="images/logo.png" class="logo" />
+          <img src="images/logo.png" alt="Sri Satya Sai logo" class="logo" />
         </a>
 
         <button
           class="navbar-toggler"
+          type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#nav"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="nav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3 gap-2"
+          >
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                >Resources</a
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="resourcesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-              <ul class="dropdown-menu">
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
                 <li>
                   <a class="dropdown-item" href="gallery.html">Gallery</a>
                 </li>
@@ -455,10 +497,17 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                >Support Us</a
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="supportDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-              <ul class="dropdown-menu">
+                Support Us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="supportDropdown">
                 <li>
                   <a class="dropdown-item" href="partnerships.html"
                     >Partnerships</a
@@ -478,10 +527,17 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                >Our Work</a
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                id="workDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-              <ul class="dropdown-menu">
+                Our Work
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="workDropdown">
                 <li>
                   <a class="dropdown-item" href="projectDone.html"
                     >Activities</a
@@ -499,7 +555,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contactUs.html">Contact Us</a>
+              <a class="nav-link" href="contactUs.html">Contact</a>
             </li>
 
             <li class="nav-item ms-lg-3">
@@ -509,8 +565,7 @@
         </div>
       </div>
     </nav>
-
-    <!-- ================= MARQUEE ================= -->
+    <!-- MARQUEE -->
     <div class="marquee-container">
       <div class="marquee-track">
         <span>
@@ -522,298 +577,258 @@
       </div>
     </div>
 
-    <!-- ================= MAIN CONTENT ================= -->
-    <div class="container mt-4">
-      <h1>Gallery</h1>
+    <div class="container py-4">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-4"
+      >
+        <h2 class="fw-bold m-0">Our Gallery</h2>
 
-      <!-- SOCIAL SERVICES -->
-      <h2 class="section-title">Social Services</h2>
-      <div class="gallery-grid fade-up">
-        <div class="gallery-card">
-          <img src="images/serve1.jpg" />
-          <div class="desc">
-            Narayan Seva — free meals for 7,00,000+ people.
-          </div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/serve2.jpg" />
-          <div class="desc">Food support for needy rural families.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/serve3.jpg" />
-          <div class="desc">Support for patient caretakers.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/serve4.jpg" />
-          <div class="desc">Free meals for villages.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/serve5.jpg" />
-          <div class="desc">Rural food distribution.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/serve6.jpg" />
-          <div class="desc">Social meal service.</div>
+        <div class="d-flex gap-2 w-100 w-md-auto">
+          <input
+            id="searchInput"
+            type="text"
+            class="form-control search-box"
+            placeholder="🔍 Search by title..."
+          />
+          <select id="categoryFilter" class="form-select filter-box">
+            <option value="all" selected>All Categories</option>
+          </select>
         </div>
       </div>
 
-      <!-- MARRIAGE -->
-      <h2 class="section-title">Religious Marriage Services</h2>
-      <div class="gallery-grid fade-up">
-        <div class="gallery-card">
-          <img src="images/merriage1.jpg" />
-          <div class="desc">Mass marriage ceremony.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/merriage2.jpg" />
-          <div class="desc">Support for poor families.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/merriage3.jpg" />
-          <div class="desc">All-religion marriage.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/merriage4.jpg" />
-          <div class="desc">Helping needy couples.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/merriage5.jpg" />
-          <div class="desc">Traditional ceremonies.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/merriage6.jpg" />
-          <div class="desc">Marriage support.</div>
-        </div>
-      </div>
-
-      <!-- SPORTS -->
-      <h2 class="section-title">Sports Development</h2>
-      <div class="gallery-grid fade-up">
-        <div class="gallery-card">
-          <img src="images/sports1.jpg" />
-          <div class="desc">State-level tournaments.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/sports2.jpg" />
-          <div class="desc">Youth training programmes.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/sports3.jpg" />
-          <div class="desc">National selections.</div>
-        </div>
-      </div>
-
-      <!-- MEDICAL -->
-      <h2 class="section-title">Medical Camps</h2>
-      <div class="gallery-grid fade-up">
-        <div class="gallery-card">
-          <img src="images/medical1.jpeg" />
-          <div class="desc">Village health camps.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/medical2.jpg" />
-          <div class="desc">Mother & child care.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/medical3.jpg" />
-          <div class="desc">Health assistance.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/medical4.jpg" />
-          <div class="desc">Medical support.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/medical5.jpg" />
-          <div class="desc">Free treatment.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="images/medical6.jpg" />
-          <div class="desc">Nutrition awareness.</div>
-        </div>
-      </div>
+      <!-- Gallery Grid -->
+      <div id="galleryContainer" class="gallery-grid"></div>
     </div>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="footer-container">
-          <!-- Column 1 -->
-          <div class="footer-col">
-            <img
-              src="images/logo.png"
-              alt="Hospital Logo"
-              class="footer-logo"
-            />
-            <h3>Satchikitsa Prasarak Mandal</h3>
-            <p><strong>Sri Satya Sai Sanjeevani Eye Hospital</strong></p>
-            <p>
-              Shri Satya Sai Vidya Nagari,<br />
-              Dr. Nandurkar Vidyalaya Campus,<br />
-              Yavatmal, Maharashtra - 445001.
-            </p>
-            <p class="footer-tagline">
-              Vision for All — Free Eye Care &amp; Social Service Initiative
-            </p>
-
-            <div class="social-links">
-              <a
-                href="https://www.facebook.com/"
-                class="fa-icon"
-                aria-label="Facebook"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a
-                href="https://twitter.com/"
-                class="fa-icon"
-                aria-label="Twitter"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a
-                href="https://www.linkedin.com/"
-                class="fa-icon"
-                aria-label="LinkedIn"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/"
-                class="fa-icon"
-                aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a
-                href="https://www.youtube.com/"
-                class="fa-icon"
-                aria-label="YouTube"
-                ><i class="fab fa-youtube"></i
-              ></a>
-            </div>
-          </div>
-
-          <!-- Column 2 -->
-          <div class="footer-col">
-            <h4>About Us</h4>
-            <ul class="footer-list">
-              <li><a href="about.html">Who We Are</a></li>
-              <li><a href="about.html">Vision &amp; Mission</a></li>
-              <li><a href="about.html">Goals &amp; Objectives</a></li>
-              <li><a href="about.html">Leadership Team</a></li>
-              <li><a href="achievements.html">Achievements</a></li>
-            </ul>
-
-            <h4 style="margin-top: 18px">Resources</h4>
-            <ul class="footer-list">
-              <li><a href="news.html">News</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="partnerships.html">Partnerships</a></li>
-              <li><a href="gallery.html">Volunteering</a></li>
-              <li><a href="news.html">Donation</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 3 -->
-          <div class="footer-col">
-            <h4>Our Work</h4>
-            <ul class="footer-list">
-              <li><a href="projectDone.html">Social Services</a></li>
-              <li><a href="projectDone.html">Religious Mass Marriages</a></li>
-              <li><a href="projectDone.html">Sports Achievements</a></li>
-              <li><a href="projectDone.html">Health Camps</a></li>
-              <li>
-                <a href="projectDone.html">Events &amp; Cultural Activities</a>
-              </li>
-            </ul>
-
-            <h4 style="margin-top: 18px">Certificates</h4>
-            <ul class="footer-list">
-              <li><a href="achievements.html">Achievements</a></li>
-              <li><a href="expenses.html">Expenses</a></li>
-              <li><a href="recoginition.html">Recoginition</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 4 -->
-          <div class="footer-col">
-            <h4>Contact Details</h4>
-            <p>
-              Email:<br />
-              <a href="mailto:prakashnandurkar9575@gmail.com"
-                >prakashnandurkar9575@gmail.com</a
-              ><br />
-              <a href="mailto:spmtrustytl@gmail.com">spmtrustytl@gmail.com</a>
-            </p>
-
-            <p>
-              Phone:<br />
-              <a href="tel:+919011503530">9011503530</a>,
-              <a href="tel:+919763448555">9763448555</a>
-            </p>
-
-            <p><strong>Secretary:</strong><br />Dr. Prakash Nandurkar</p>
-
-            <h4 style="margin-top: 18px">Major Donors</h4>
-            <ul class="footer-list">
-              <li>
-                <a href="https://www.nseindia.com/"
-                  >National Stock Exchange, Mumbai</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.owenscorning.com/en-in/composites/showcases/india"
-                  >Owens Corning India</a
-                >
-              </li>
-              <li><a href="https://ekam.ngo/">Ekam Foundation</a></li>
-              <li>
-                <a href="https://www.bv.com/">Black &amp; Veatch Pvt. Ltd.</a>
-              </li>
-            </ul>
-
-            <div class="footer-btn-container">
-              <a href="contactUs.html" class="footer-btn">Contact Us</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>
-            © 2025 SPM — Sri Satya Sai Sanjeevani Eye Hospital | Designed &
-            Developed by <b>Guru Software Solutions</b> All Rights Reserved
-          </p>
-        </div>
-      </footer>
-
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Fade-up animation -->
     <script>
-      const fadeElements = document.querySelectorAll('.fade-up')
+      let galleryData = []
 
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('show')
-            }
-          })
-        },
-        { threshold: 0.2 }
-      )
+      async function loadGallery() {
+        try {
+          const res = await fetch('http://localhost:5000/api/gallery')
+          const json = await res.json()
 
-      fadeElements.forEach(el => observer.observe(el))
+          galleryData = json.data || []
+          populateCategoryFilter()
+          renderGallery(galleryData)
+        } catch (error) {
+          console.error('Error loading gallery:', error)
+        }
+      }
+
+      function populateCategoryFilter() {
+        const select = document.getElementById('categoryFilter')
+        const categories = [
+          ...new Set(galleryData.map(i => i.category).filter(Boolean))
+        ]
+
+        select.innerHTML = `<option value="all">All Categories</option>`
+        categories.forEach(cat => {
+          select.innerHTML += `<option value="${cat}">${cat}</option>`
+        })
+      }
+
+      function renderGallery(images) {
+        const container = document.getElementById('galleryContainer')
+        container.innerHTML = ''
+
+        if (!images.length) {
+          container.innerHTML = `<p class="text-center text-danger">No images found</p>`
+          return
+        }
+
+        images.forEach((item, index) => {
+          const imgURL = `http://localhost:5000${item.imageUrl}`
+
+          container.innerHTML += `
+  <div class="gallery-card fade-item" style="animation-delay:${index * 0.06}s;">
+    <img src="${imgURL}" class="gallery-image" />
+
+    <div class="gallery-info">
+      <div class="gallery-title">${item.title}</div>
+      <span class="gallery-tag">${item.category}</span>
+    </div>
+  </div>
+`
+        })
+      }
+
+      // 🔍 Search
+      document.getElementById('searchInput').addEventListener('input', e => {
+        const query = e.target.value.toLowerCase()
+        const filtered = galleryData.filter(i =>
+          i.title.toLowerCase().includes(query)
+        )
+        renderGallery(filtered)
+      })
+
+      // 🎯 Filter by category
+      document
+        .getElementById('categoryFilter')
+        .addEventListener('change', e => {
+          const selected = e.target.value
+          if (selected === 'all') return renderGallery(galleryData)
+
+          const filtered = galleryData.filter(i => i.category === selected)
+          renderGallery(filtered)
+        })
+
+      loadGallery()
     </script>
 
-    <style>
-      .fade-up {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: 0.7s ease;
-      }
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Column 1: Logo + Trust Info -->
+        <div class="footer-col">
+          <img src="images/logo.png" alt="Hospital Logo" class="footer-logo" />
+          <h3>Satchikitsa Prasarak Mandal</h3>
+          <p><strong>Sri Satya Sai Sanjeevani Eye Hospital</strong></p>
+          <p>
+            Shri Satya Sai Vidya Nagari,<br />
+            Dr. Nandurkar Vidyalaya Campus,<br />
+            Yavatmal, Maharashtra - 445001.
+          </p>
+          <p class="footer-tagline">
+            Vision for All — Free Eye Care & Social Service Initiative
+          </p>
 
-      .fade-up.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/"
+              class="fa-icon"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://twitter.com/" class="fa-icon" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              class="fa-icon"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/"
+              class="fa-icon"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.youtube.com/"
+              class="fa-icon"
+              aria-label="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <ul class="footer-list">
+            <li><a href="about.html">Who We Are</a></li>
+            <li><a href="about.html">Vision & Mission</a></li>
+            <li><a href="about.html">Goals & Objectives</a></li>
+            <li><a href="about.html">Leadership Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Resources</h4>
+          <ul class="footer-list">
+            <li><a href="news.html">News</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="gallery.html">Volunteering</a></li>
+            <li><a href="news.html">Donation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+          <h4>Our Work</h4>
+          <ul class="footer-list">
+            <li><a href="projectDone.html">Social Services</a></li>
+            <li><a href="projectDone.html">Religious Mass Marriages</a></li>
+            <li><a href="projectDone.html">Sports Achievements</a></li>
+            <li><a href="projectDone.html">Health Camps</a></li>
+            <li>
+              <a href="projectDone.html">Events & Cultural Activities</a>
+            </li>
+          </ul>
+
+          <h4 style="margin-top: 18px">Certificates</h4>
+          <ul class="footer-list">
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="expenses.html">Expenses</a></li>
+            <li><a href="recoginition.html">Recoginition</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact + Donors + Social -->
+        <div class="footer-col">
+          <h4>Contact Details</h4>
+          <p>
+            Email:<br />
+            <a href="mailto:prakashnandurkar9575@gmail.com"
+              >prakashnandurkar9575@gmail.com</a
+            ><br />
+            <a href="mailto:spmtrustytl@gmail.com">spmtrustytl@gmail.com</a>
+          </p>
+
+          <p>
+            Phone:<br />
+            <a href="tel:+919011503530">9011503530</a>,
+            <a href="tel:+919763448555">9763448555</a>
+          </p>
+
+          <p><strong>Secretary:</strong><br />Dr. Prakash Nandurkar</p>
+
+          <h4 style="margin-top: 18px">Major Donors</h4>
+          <ul class="footer-list">
+            <li>
+              <a href="https://www.nseindia.com/"
+                >National Stock Exchange, Mumbai</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.owenscorning.com/en-in/composites/showcases/india"
+                >Owens Corning India</a
+              >
+            </li>
+            <li><a href="https://ekam.ngo/">Ekam Foundation</a></li>
+            <li>
+              <a href="https://www.bv.com/">Black & Veatch Pvt. Ltd.</a>
+            </li>
+          </ul>
+
+          <div class="footer-btn-container">
+            <a href="contactUs.html" class="footer-btn">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 SPM — Sri Satya Sai Sanjeevani Eye Hospital | Designed &amp;
+          Developed by <b>Guru Software Solutions</b> All Rights Reserved
+        </p>
+      </div>
+    </footer>
+
+   
   </body>
 </html>
